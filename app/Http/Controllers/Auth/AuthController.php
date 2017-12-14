@@ -60,8 +60,11 @@ class AuthController extends Controller
         $entrenador = new Entrenador();
         $entrenador->nombre = $request->nickname;
         $entrenador->save();
+
+
         $user = new User();
         $user->password = $request->password;
+        $user->idEntrenador = $entrenador->id;
         $user->save();
     }
 

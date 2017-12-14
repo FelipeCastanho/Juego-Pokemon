@@ -13,9 +13,9 @@ class CreatePokemonTable extends Migration
     public function up()
     {
         Schema::create('pokemon', function (Blueprint $table) {
-            $table->increments('idPokemon');
+            $table->increments('id');
             $table->integer('idEntrenador')->unsigned();
-            $table->foreign('idEntrenador')->references('idEntrenador')->on('entrenador');
+            $table->foreign('idEntrenador')->references('id')->on('entrenador');
             $table->integer('numeroPokemon');
             $table->integer('idHabilidad1');
             $table->integer('idHabilidad2');

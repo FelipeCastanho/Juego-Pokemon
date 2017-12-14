@@ -25,7 +25,7 @@ class CreateUsuarioTable extends Migration
             $table->boolean('confirmoEmail');
             $table->string('confirm_token', 100);
             $table->integer('idEntrenador')->unsigned();
-            $table->foreign('idEntrenador')->references('idEntrenador')->on('entrenador');
+            $table->foreign('idEntrenador')->references('id')->on('entrenador');
             $table->rememberToken();
             $table->timestamps();
         });

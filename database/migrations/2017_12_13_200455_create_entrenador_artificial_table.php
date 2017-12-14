@@ -13,10 +13,10 @@ class CreateEntrenadorArtificialTable extends Migration
     public function up()
     {
         Schema::create('entrenadorArtificial', function (Blueprint $table) {
-            $table->increments('idEntrenadorArtificial');
+            $table->increments('id');
             $table->integer('dificultad');
             $table->integer('idEntrenador')->unsigned();
-            $table->foreign('idEntrenador')->references('idEntrenador')->on('entrenador');
+            $table->foreign('idEntrenador')->references('id')->on('entrenador');
         });
     }
 
