@@ -7,13 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class EntrenadorController extends Controller
+class ArtificialController extends Controller
 {
     public function perfil(Request $request){
-        return view("Entrenador.perfil");
-    }
-
-    public function index(){
-        return View('Entrenador.home');
+        
+        return view("EntrenadorArtificial.perfil");
     }
 }

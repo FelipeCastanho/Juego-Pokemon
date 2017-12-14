@@ -1,5 +1,6 @@
 @extends('Layout.app')
 @section('content')
+
 <div class="container-fluid" align="center">
 	<div id="form-content" class="col-sm-6">
 		<div id="encabezado" class="form-group">
@@ -88,39 +89,5 @@
     		</div>
     	</div>
     </div>
-</div>
-<br>
-<div class="container" id="batallas-table">
-	<h1>Historial de batallas</h1>
-	<br>
-	<table class="table table-bordered table-striped" id="historial">
-		<thead>
-			<th> Nombre oponente </th>
-			<th> Resultado </th>
-			<th> Fecha </th>
-		</thead>
-		<tbody>
-			<tr>
-				<td> Entrenador artificial </td>
-				<td> Win </td>
-				<td> 20/11/17 </td>
-			</tr>
-			<tr>
-				<td> Entrenador artificial Ash </td>
-				<td> Win </td>
-				<td> 20/11/17 </td>
-			</tr>
-			<tr>
-				<td> Entrenador artificial Ismael </td>
-				<td> Win </td>
-				<td> 20/11/17 </td>
-			</tr>
-			<tr>
-				<td> Entrenador artificial Pikaboss </td>
-				<td> Lose </td>
-				<td> 20/11/17 </td>
-			</tr>
-		</tbody>
-	</table>
 </div>
 @endsection
