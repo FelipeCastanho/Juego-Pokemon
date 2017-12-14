@@ -16,7 +16,7 @@
 		  <a href="{{url('entrenador')}}">INICIO</a>
 		  <a href="{{url('entrenador/perfil')}}">PERFIL</a>
 		  <a href="#">ACERCA DE</a>
-		  <a href="#">SALIR</a>
+		  <a href='{{url("/Auth/logout")}}'>SALIR</a>
 		</div>
 	</div>
 	<br>
