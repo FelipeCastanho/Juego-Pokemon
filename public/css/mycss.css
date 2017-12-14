@@ -1,0 +1,137 @@
+#formulario-inicio {
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    width: 40%;
+}
+
+#form-top{
+    border-bottom-style: solid;
+    border-color: #fff;
+    border-bottom-width: 2px;
+    border-bottom-color: #DDD;
+}
+
+#form-botton {
+    background-color: #eee;
+    border-radius: 10px;
+}
+
+.formulario{
+    width: 80%;
+}
+
+#sermaestro{
+    color: #848484;
+}
+
+#registro{
+    color: #fff;
+    background-color: #045FB4;
+}
+
+#inicio{
+    color: #fff;
+    background-color: #045FB4;
+}
+
+#form-content{
+    border-radius: 5px;
+}
+
+#navbar{
+    border-bottom-style: solid;
+    border-color: #fff;
+    border-bottom-width: 2px;
+    border-bottom-color: #DDD;
+}
+
+#prueba{
+    color: #fff;
+    background-color: #045FB4;
+}
+
+#encabezado {
+    background: #fff;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    height: 200px;
+    position: relative;
+    width: 200px;
+    display: block;
+    
+}
+
+#portada {
+    border-radius: 50%;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 99%;
+}
+
+#pen{
+    position: relative;
+    font-size: 500%;
+    color: #045FB4;
+    margin-left: 80%;
+    margin-top: 75%;
+}
+
+#pen-save{
+    font-size: 500%;
+}
+
+#form-content{
+    display: block;
+}
+
+.form-control{
+    height: 100%;
+    text-align: center;
+    font-size: 15px;
+}
+
+#sexo{
+    text-align-last: center;
+    text-align: center; 
+    height: 100%;
+}
+
+#form-perfil .form-group{
+    width: 90%;
+}
+
+#historial{
+    background-color: #fff;
+    border-width: 5px;
+    border-color: #DDD;
+    text-align: center;
+    font-size: 150%;
+}
+
+body{
+    background-image: url("../img/bg.png");
+}
+
+#navbar{
+    background-image: url("../img/bg-dark.png");
+}
+
+footer{
+    color: #fff;
+    background-color: #1f1f1f;
+}
+
+.form-control{
+    border-color: #585858;
+    color: #000000;
+}
+
+#title-equipo{
+    margin-top: 7.5%;
+}
+
+#myPokemons{
+    margin-top: 15%;
+}
