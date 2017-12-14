@@ -9,6 +9,9 @@
 	    	</a>	
 	    </div>
     	<form class="formulario" id="form-perfil">
+    		<div class="form-group">
+    			<h3 id="nombre"> Ash Ketchum</h3>
+    		</div>
     		<div class="form-group"	>
     			<input type="text" class="form-control" id="nombre" placeholder="Nombre" value="{{$entrenador->nombre}}">
     		</div>
@@ -28,9 +31,6 @@
     			<input type="text" class="form-control" id="pais" placeholder="Pais" value="{{$entrenador->pais}}">
     		</div>	
     		<div class="form-group">
-    			<input type="text" class="form-control" id="nickname" placeholder="Nombre de usuario">
-    		</div>
-    		<div class="form-group">
     			<input type="password" class="form-control" id="password" placeholder="Contraseña" value="{{$entrenador->password}}">
     		</div>
     		<div class="form-group">
@@ -49,7 +49,11 @@
     			id="pok1" data-html="true" title="Habilidades"
 	    			data-content="
 	    			<div>
-	    			<strong> Acá se ponen las habilidades</strong>
+	    			<strong>{{$listaPokemon[0]->idHabilidad1}}<br>
+	    					{{$listaPokemon[0]->idHabilidad2}}<br>
+	    					{{$listaPokemon[0]->idHabilidad3}}<br>
+	    					{{$listaPokemon[0]->idHabilidad4}}<br>
+	    			</strong>
 	    			</div>"
 	    			data-placement="bottom" data-toggle="popover">
 	    		<img width="20%" src="{{asset('img/zubat.png')}}" alt="Portada"
@@ -102,26 +106,13 @@
 			<th> Fecha </th>
 		</thead>
 		<tbody>
-			<tr>
-				<td> Entrenador artificial </td>
-				<td> Win </td>
-				<td> 20/11/17 </td>
-			</tr>
-			<tr>
-				<td> Entrenador artificial Ash </td>
-				<td> Win </td>
-				<td> 20/11/17 </td>
-			</tr>
-			<tr>
-				<td> Entrenador artificial Ismael </td>
-				<td> Win </td>
-				<td> 20/11/17 </td>
-			</tr>
-			<tr>
-				<td> Entrenador artificial Pikaboss </td>
-				<td> Lose </td>
-				<td> 20/11/17 </td>
-			</tr>
+			@foreach($batallas as $batalla)
+				<tr>
+					<td>{{$batalla->entrenadorArtificial->nickname}}</td>
+					<td>{{$batalla->resultado}}</td>
+					<td>{{$batalla->fecha}}</td>
+				</tr>
+			 @endforeach
 		</tbody>
 	</table>
 </div>

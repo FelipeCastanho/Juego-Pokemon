@@ -12,4 +12,10 @@ class Entrenador extends Model
     public function scopeEntrenadorNickname($query, $nickname){
     	return $query->where('nickname', $nickname);
     }
+
+    public function batallas()
+    {
+        return $this->hasMany('App\Batalla', 'idEntrenadorHumano', 'id');
+    }  
+
 }
