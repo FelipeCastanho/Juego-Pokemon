@@ -2,7 +2,7 @@
 <html lang="es">
 	<head>
 		<link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}">
-		<link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.css.png')}}">
+		<link rel="stylesheet" type="text/css" href="{{css/bootstrap.css')}}">
 		<link rel="stylesheet" type="text/css" href="{{asset('css/mycss.css')}}">
 		<meta charset="utf-8">
 		<title>Gotta Catch 'Em All</title>
@@ -22,13 +22,12 @@
 				</div>
 				<div  class="form-group" id="form-botton">
 				<br> 
-					<form action="{{url('Auth/register')}}" class="formulario" method="POST">
-						{{csrf_field()}}
+					<form action="/registrar" class="formulario" method="GET">
 						<div class="form-group">
-							<input type="text" class="form-control" name="nickname" placeholder="Nombre de usuario">
+							<input type="text" class="form-control" id="nickname" placeholder="Nombre de usuario">
 						</div>
 						<div class="form-group">
-							<input type="password" class="form-control" name="password" placeholder="Contraseña">
+							<input type="password" class="form-control" id="password" placeholder="Contraseña">
 						</div>
 						<br>
 						<div class="form-group">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Entrenador;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -54,12 +55,14 @@ class AuthController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    public function getRegister(Request $request){
-        DD("HI");
-    }
 
      public function postRegister(Request $request){
-        DD("HELLO");
+        $entrenador = new Entrenador();
+        $entrenador->nombre = $request->nickname;
+        $entrenador->save();
+        $user = new User();
+        $user->password = $request->password;
+        $user->save();
     }
 
 
