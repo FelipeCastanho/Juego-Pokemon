@@ -14,12 +14,12 @@ class CreateUsuarioTable extends Migration
     {
         Schema::create('usuario', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nickname');
+            $table->string('nombre');
             $table->integer('cbg');
             $table->string('pais');
             $table->integer('edad');
             $table->string('sexo');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('password');
             $table->boolean('estado');
             $table->boolean('confirmoEmail');

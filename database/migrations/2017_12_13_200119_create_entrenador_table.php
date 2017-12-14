@@ -14,7 +14,7 @@ class CreateEntrenadorTable extends Migration
     {
         Schema::create('entrenador', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre');
+            $table->string('nickname')->unique();
             $table->timestamps();
         });
     }

@@ -3,3 +3,5 @@
 Route::get('/', 'HomeController@home');
 
 Route::post('Auth/register', 'Auth\AuthController@postRegister');
+
+Route::get('entrenador/perfil', 'EntrenadorController@perfil');

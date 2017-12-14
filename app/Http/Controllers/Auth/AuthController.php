@@ -58,7 +58,7 @@ class AuthController extends Controller
 
      public function postRegister(Request $request){
         $entrenador = new Entrenador();
-        $entrenador->nombre = $request->nickname;
+        $entrenador->nickname = $request->nickname;
         $entrenador->save();
 
 
@@ -66,6 +66,7 @@ class AuthController extends Controller
         $user->password = $request->password;
         $user->idEntrenador = $entrenador->id;
         $user->save();
+        return redirect("entrenador/perfil");
     }
 
 
