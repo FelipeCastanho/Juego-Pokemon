@@ -13,4 +13,9 @@ class ArtificialController extends Controller
         
         return view("EntrenadorArtificial.perfil");
     }
+
+    public function registro(Request $request){
+        
+        return view("EntrenadorArtificial.registro");
+    }
 }

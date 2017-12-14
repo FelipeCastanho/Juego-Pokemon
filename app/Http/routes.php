@@ -10,3 +10,5 @@ Route::get('entrenador/', 'EntrenadorController@index');
 Route::get('entrenador/perfil', 'EntrenadorController@perfil');
 
 Route::get('artificial/perfil', 'ArtificialController@perfil');
+
+Route::get('artificial/registro', 'ArtificialController@registro');
