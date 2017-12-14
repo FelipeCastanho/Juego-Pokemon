@@ -5,6 +5,9 @@ Route::get('/', 'HomeController@home');
 
 Route::post('Auth/register', 'Auth\AuthController@postRegister');
 
+Route::post('Auth/login', 'Auth\AuthController@postLogin');
+Route::get('Auth/logout', 'Auth\AuthController@getLogout');
+
 Route::get('entrenador/', 'EntrenadorController@index');
 
 Route::get('entrenador/perfil', 'EntrenadorController@perfil');

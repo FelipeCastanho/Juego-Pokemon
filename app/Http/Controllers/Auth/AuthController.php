@@ -63,7 +63,7 @@ class AuthController extends Controller
 
 
         $user = new User();
-        $user->password = $request->password;
+        $user->password = bcrypt($request->password);
         $user->idEntrenador = $entrenador->id;
         $user->save();
         return redirect("entrenador/perfil");
@@ -92,5 +92,37 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    public function postLogin(Request $request){
+
+       
+
+        if($request->nickname != null && $request->password != null){
+
+            $entrenador = Entrenador::entrenadorNickname($request->nickname)->get()->first();
+
+            if(sizeOf($entrenador) != 0){
+
+                if (Auth::attempt(
+                        [
+                            'idEntrenador' => $entrenador->id,
+                            'password' => $request->password,
+                        ], true
+                        )){
+                    return redirect('entrenador/perfil');
+                }else{
+                    flash('Contraseña incorrecta, intente de nuevo')->warning()->important();
+                    return redirect('/');
+                }
+
+            }else{
+                flash('El nombre de usuario o contraseña son incorrectos')->warning()->important();
+                return redirect('/');
+            }
+        }else{
+            flash('Debe ingresar los campos de nombre de usuario y contraseña')->error()->important();
+            return redirect('/');
+        }
     }
 }
