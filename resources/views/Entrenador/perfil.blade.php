@@ -10,26 +10,28 @@
 	    </div>
     	<form class="formulario" id="form-perfil">
     		<div class="form-group"	>
-    			<input type="text" class="form-control" id="nombre" placeholder="Nombre">
+    			<input type="text" class="form-control" id="nombre" placeholder="Nombre" value="{{$entrenador->nombre}}">
     		</div>
     		<div class="form-group">
-    			<input type="text" class="form-control" id="edad" placeholder="Edad">
+    			<input type="text" class="form-control" id="edad" placeholder="Edad" value="{{$entrenador->edad}}">
     		</div>
     		<div class="form-group" >
     			<select class="form-control" id="sexo" style="text-align:center;">
     				<option> Sexo </option>
-    				<option id="femenino" value="Femenino"> Femenino </option>
-    				<option id="masculino" value="Masculino"> Masculino </option>
+    				<option id="femenino" value="Femenino"
+    				 <?php if($entrenador->sexo == "femenino") echo "selected=''" ?> > Femenino </option>
+    				<option id="masculino" value="Masculino"
+    				<?php if($entrenador->sexo == "masculino") echo "selected=''" ?> > Masculino </option>
     			</select> 
     		</div>
     		<div class="form-group">
-    			<input type="text" class="form-control" id="pais" placeholder="Pais">
+    			<input type="text" class="form-control" id="pais" placeholder="Pais" value="{{$entrenador->pais}}">
     		</div>	
     		<div class="form-group">
     			<input type="text" class="form-control" id="nickname" placeholder="Nombre de usuario">
     		</div>
     		<div class="form-group">
-    			<input type="password" class="form-control" id="password" placeholder="Contraseña">
+    			<input type="password" class="form-control" id="password" placeholder="Contraseña" value="{{$entrenador->password}}">
     		</div>
     		<div class="form-group">
     			<a href="#">
