@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Entrenador;
+use App\Pokemon;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -49,6 +50,46 @@ class AuthController extends Controller
         $this->middleware($this->guestMiddleware(), ['except' => 'getLogout']);
     }
 
+    public function pokemonHabilities($idPokemon, $idEntrenador){
+        $base = 'http://pokeapi.co/api/v2/pokemon/';
+        $data = file_get_contents($base.$idPokemon.'/');
+        $pokemondata = json_decode($data);
+        $movimientos = $pokemondata->moves;
+
+        $movimientosSeleccionados = array_rand($movimientos,  4);
+
+        $habilidades = array();
+
+        foreach ($movimientosSeleccionados as $movimientoSeleccionado) {
+            $url = $movimientos[$movimientoSeleccionado]->move->url;
+            $split = preg_split('[/]', $url);
+            $habilidad = $split[6];
+            array_push($habilidades, $habilidad);
+        }
+
+        $pokemon = new Pokemon();
+        $pokemon->idEntrenador = $idEntrenador;
+        $pokemon->numeroPokemon = $idPokemon;
+        $pokemon->idHabilidad1 = $habilidades[0];
+        $pokemon->idHabilidad2 = $habilidades[1];
+        $pokemon->idHabilidad3 = $habilidades[2];
+        $pokemon->idHabilidad4 = $habilidades[3];
+        $pokemon->save();
+    }
+
+    public function pokemonTeam($idEntrenador){
+        $base = 'http://pokeapi.co/api/v2/pokemon/';
+        $numbers = range(1, 387);
+        shuffle($numbers);
+        $pokemons = array_slice($numbers, 0, 5);
+        array_push($pokemons, 25);
+
+        foreach ($pokemons as $pokemon) {
+            $this->pokemonHabilities($pokemon,$idEntrenador);
+        }
+    }
+
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -61,6 +102,7 @@ class AuthController extends Controller
         $entrenador->nickname = $request->nickname;
         $entrenador->save();
 
+        $this->pokemonTeam($entrenador->id);
 
         $user = new User();
         $user->password = bcrypt($request->password);
@@ -69,6 +111,7 @@ class AuthController extends Controller
         return redirect("entrenador/perfil");
     }
 
+    
 
     protected function validator(array $data)
     {
@@ -95,6 +138,8 @@ class AuthController extends Controller
     }
 
     public function postLogin(Request $request){
+
+        $this->pokemonTeam();
 
         if($request->nickname != null && $request->password != null){
 
