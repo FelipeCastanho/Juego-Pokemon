@@ -139,8 +139,6 @@ class AuthController extends Controller
 
     public function postLogin(Request $request){
 
-        $this->pokemonTeam();
-
         if($request->nickname != null && $request->password != null){
 
             $entrenador = Entrenador::entrenadorNickname($request->nickname)->get()->first();
