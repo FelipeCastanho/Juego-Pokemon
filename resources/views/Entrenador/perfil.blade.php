@@ -45,50 +45,76 @@
     	<br>
     	<div class="container">
     		<div class="form-group" id="myPokemons">
-    			<img width="20%" src="{{asset('img/pikachu.png')}}" alt="Portada"
+    			<img width="20%" src="{{$imagenes[0]}}" alt="Portada"
     			id="pok1" data-html="true" title="Habilidades"
 	    			data-content="
 	    			<div>
-	    			<strong>{{$listaPokemon[0]->idHabilidad1}}<br>
-	    					{{$listaPokemon[0]->idHabilidad2}}<br>
-	    					{{$listaPokemon[0]->idHabilidad3}}<br>
-	    					{{$listaPokemon[0]->idHabilidad4}}<br>
+	    			<strong>
+	    				{{$habilidades[0]}}<br>
+	    				{{$habilidades[1]}}<br>
+	    				{{$habilidades[2]}}<br>
+	    				{{$habilidades[3]}}<br>
 	    			</strong>
 	    			</div>"
 	    			data-placement="bottom" data-toggle="popover">
-	    		<img width="20%" src="{{asset('img/zubat.png')}}" alt="Portada"
+	    		<img width="20%" src="{{$imagenes[1]}}" alt="Portada"
     			id="pok2" data-html="true" title="Habilidades"
 	    			data-content="
 	    			<div>
-	    			<strong> Acá se ponen las habilidades</strong>
+	    			<strong>
+	    				{{$habilidades[4]}}<br>
+	    				{{$habilidades[5]}}<br>
+	    				{{$habilidades[6]}}<br>
+	    				{{$habilidades[7]}}<br>
+	    			</strong>
 	    			</div>"
 	    			data-placement="bottom" data-toggle="popover">
-	    		<img width="20%" src="{{asset('img/pidgeotto.png')}}" alt="Portada"
+	    		<img width="20%" src="{{$imagenes[2]}}" alt="Portada"
     			id="pok3" data-html="true" title="Habilidades"
 	    			data-content="
 	    			<div>
-	    			<strong> Acá se ponen las habilidades</strong>
+	    			<strong>
+	    				{{$habilidades[8]}}<br>
+	    				{{$habilidades[9]}}<br>
+	    				{{$habilidades[10]}}<br>
+	    				{{$habilidades[11]}}<br>
+	    			</strong>
 	    			</div>"
 	    			data-placement="bottom" data-toggle="popover">
-	    		<img width="20%" src="{{asset('img/mankey.png')}}" alt="Portada"
+	    		<img width="20%" src="{{$imagenes[3]}}" alt="Portada"
     			id="pok4" data-html="true" title="Habilidades"
 	    			data-content="
 	    			<div>
-	    			<strong> Acá se ponen las habilidades</strong>
+	    			<strong>
+	    				{{$habilidades[12]}}<br>
+	    				{{$habilidades[13]}}<br>
+	    				{{$habilidades[14]}}<br>
+	    				{{$habilidades[15]}}<br>
+	    			</strong>
 	    			</div>"
 	    			data-placement="bottom" data-toggle="popover">
-	    		<img width="20%" src="{{asset('img/gyarados.png')}}" alt="Portada"
+	    		<img width="20%" src="{{$imagenes[4]}}" alt="Portada"
     			id="pok5" data-html="true" title="Habilidades"
 	    			data-content="
 	    			<div>
-	    			<strong> Acá se ponen las habilidades</strong>
+	    			<strong>
+	    				{{$habilidades[16]}}<br>
+	    				{{$habilidades[17]}}<br>
+	    				{{$habilidades[18]}}<br>
+	    				{{$habilidades[19]}}<br>
+	    			</strong>
 	    			</div>"
 	    			data-placement="bottom" data-toggle="popover">
-				<img width="20%" src="{{asset('img/charmander.png')}}" alt="Portada"
+				<img width="20%" src="{{$imagenes[5]}}" alt="Portada"
     			id="pok6" data-html="true" title="Habilidades"
 	    			data-content="
 	    			<div>
-	    			<strong> Acá se ponen las habilidades</strong>
+	    			<strong>
+	    				{{$habilidades[20]}}<br>
+	    				{{$habilidades[21]}}<br>
+	    				{{$habilidades[22]}}<br>
+	    				{{$habilidades[23]}}<br>
+	    			</strong>
 	    			</div>"
 	    			data-placement="bottom" data-toggle="popover">
     		</div>

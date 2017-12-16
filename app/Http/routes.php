@@ -11,6 +11,7 @@ Route::get('Auth/logout', 'Auth\AuthController@getLogout');
 Route::get('entrenador/', 'EntrenadorController@index');
 
 Route::get('entrenador/perfil', 'EntrenadorController@perfil');
+Route::get('entrenador/login', 'EntrenadorController@login');
 
 Route::get('artificial/perfil', 'ArtificialController@perfil');
 
