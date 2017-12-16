@@ -56,7 +56,9 @@ class AuthController extends Controller
         $pokemondata = json_decode($data);
         $movimientos = $pokemondata->moves;
 
-        $movimientosSeleccionados = array_rand($movimientos,  4);
+        $numbers = range(1, sizeof($movimientos)-1);
+        shuffle($numbers);
+        $movimientosSeleccionados = array_slice($numbers, 0, 4);
 
         $habilidades = array();
 
@@ -79,7 +81,7 @@ class AuthController extends Controller
 
     public function pokemonTeam($idEntrenador){
         $base = 'http://pokeapi.co/api/v2/pokemon/';
-        $numbers = range(1, 387);
+        $numbers = range(1, 386);
         shuffle($numbers);
         $pokemons = array_slice($numbers, 0, 5);
         array_push($pokemons, 25);
