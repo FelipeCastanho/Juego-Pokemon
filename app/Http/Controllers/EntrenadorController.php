@@ -24,39 +24,22 @@ class EntrenadorController extends Controller
     }
 
     public function perfil(Request $request){
-        ini_set('max_execution_time', 180);
         $id = Auth::User()->idEntrenador;
     	$entrenador = User::find(Auth::User()->id);
     	$batallas = Batalla::all()->where('idEntrenadorHumano', $id);
 
-        $base = 'http://pokeapi.co/api/v2/';
         $pokemons = Pokemon::entrenadorPokemon($id)->get();
         $urlsImagenes = array();
         $habilidades = array();
         foreach ($pokemons as $pokemon) {
-            $data = file_get_contents($base.'pokemon/'.$pokemon->numeroPokemon.'/');
-            $pokemondata = json_decode($data);
-            $imagenes = $pokemondata->sprites;
-            array_push($urlsImagenes, $imagenes->front_default);
-
-            $movedata = file_get_contents($base.'move/'.$pokemon->idHabilidad1.'/');
-            $hability = json_decode($movedata);
-            array_push($habilidades, $hability->name);
-
-            $movedata = file_get_contents($base.'move/'.$pokemon->idHabilidad2.'/');
-            $hability = json_decode($movedata);
-            array_push($habilidades, $hability->name);
-
-            $movedata = file_get_contents($base.'move/'.$pokemon->idHabilidad3.'/');
-            $hability = json_decode($movedata);
-            array_push($habilidades, $hability->name);
-
-            $movedata = file_get_contents($base.'move/'.$pokemon->idHabilidad4.'/');
-            $hability = json_decode($movedata);
-            array_push($habilidades, $hability->name);
+            array_push($urlsImagenes, "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/".$pokemon->numeroPokemon.".png");
+            array_push($habilidades,$pokemon->nombreHabilidad1);
+            array_push($habilidades,$pokemon->nombreHabilidad2);
+            array_push($habilidades,$pokemon->nombreHabilidad3);
+            array_push($habilidades,$pokemon->nombreHabilidad4);
         }
 
-        return view("Entrenador.perfil")->with('entrenador', $entrenador)->with('batallas', $batallas)->with('imagenes',$urlsImagenes)->with('habilidades',$habilidades);
+        return view("Entrenador.perfil")->with('entrenador', $entrenador)->with('batallas', $batallas)->with('imagenes',$urlsImagenes)->with('habilidades', $habilidades);
     }
 
     public function index(){

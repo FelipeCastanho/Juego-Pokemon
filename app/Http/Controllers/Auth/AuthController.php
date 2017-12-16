@@ -51,6 +51,7 @@ class AuthController extends Controller
     }
 
     public function pokemonHabilities($idPokemon, $idEntrenador){
+        ini_set('max_execution_time', 180);
         $base = 'http://pokeapi.co/api/v2/pokemon/';
         $data = file_get_contents($base.$idPokemon.'/');
         $pokemondata = json_decode($data);
@@ -64,23 +65,22 @@ class AuthController extends Controller
 
         foreach ($movimientosSeleccionados as $movimientoSeleccionado) {
             $url = $movimientos[$movimientoSeleccionado]->move->url;
-            $split = preg_split('[/]', $url);
-            $habilidad = $split[6];
-            array_push($habilidades, $habilidad);
+            $movimientodata = file_get_contents($url);
+            $movimiento = json_decode($movimientodata);
+            array_push($habilidades, $movimiento->name);
         }
 
         $pokemon = new Pokemon();
         $pokemon->idEntrenador = $idEntrenador;
         $pokemon->numeroPokemon = $idPokemon;
-        $pokemon->idHabilidad1 = $habilidades[0];
-        $pokemon->idHabilidad2 = $habilidades[1];
-        $pokemon->idHabilidad3 = $habilidades[2];
-        $pokemon->idHabilidad4 = $habilidades[3];
+        $pokemon->nombreHabilidad1 = $habilidades[0];
+        $pokemon->nombreHabilidad2 = $habilidades[1];
+        $pokemon->nombreHabilidad3 = $habilidades[2];
+        $pokemon->nombreHabilidad4 = $habilidades[3];
         $pokemon->save();
     }
 
     public function pokemonTeam($idEntrenador){
-        $base = 'http://pokeapi.co/api/v2/pokemon/';
         $numbers = range(1, 386);
         shuffle($numbers);
         $pokemons = array_slice($numbers, 0, 5);
