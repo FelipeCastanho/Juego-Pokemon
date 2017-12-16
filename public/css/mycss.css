@@ -25,11 +25,17 @@
 }
 
 #registro{
+    font-size: 100%;
+    width: 30%;
+    height: 50%; 
     color: #fff;
     background-color: #045FB4;
 }
 
 #inicio{
+    font-size: 100%;
+    width: 30%;
+    height: 50%; 
     color: #fff;
     background-color: #045FB4;
 }
@@ -168,8 +174,6 @@ div.scrollmenu a:hover {
 #listartificial{
   margin-bottom: 1%;
 }
-
-
 
 .glyphicon{
   color: #000;
