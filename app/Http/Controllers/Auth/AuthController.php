@@ -57,26 +57,23 @@ class AuthController extends Controller
         $pokemondata = json_decode($data);
         $movimientos = $pokemondata->moves;
 
-        $numbers = range(1, sizeof($movimientos)-1);
-        shuffle($numbers);
-        $movimientosSeleccionados = array_slice($numbers, 0, 4);
-
-        $habilidades = array();
-
-        foreach ($movimientosSeleccionados as $movimientoSeleccionado) {
-            $url = $movimientos[$movimientoSeleccionado]->move->url;
-            $movimientodata = file_get_contents($url);
-            $movimiento = json_decode($movimientodata);
-            array_push($habilidades, $movimiento->name);
+        $max = sizeof($movimientos)-1;
+        $x = 0;
+        $movimientosSeleccionados = array();
+        while ($x<4) {
+          $num_aleatorio = rand(1,$max);
+          if (!in_array($num_aleatorio,$movimientosSeleccionados)) {
+            array_push($movimientosSeleccionados,$num_aleatorio);
+            $x++;
+          }
         }
-
         $pokemon = new Pokemon();
         $pokemon->idEntrenador = $idEntrenador;
         $pokemon->numeroPokemon = $idPokemon;
-        $pokemon->nombreHabilidad1 = $habilidades[0];
-        $pokemon->nombreHabilidad2 = $habilidades[1];
-        $pokemon->nombreHabilidad3 = $habilidades[2];
-        $pokemon->nombreHabilidad4 = $habilidades[3];
+        $pokemon->nombreHabilidad1 = $movimientos[$movimientosSeleccionados[0]]->move->name;
+        $pokemon->nombreHabilidad2 = $movimientos[$movimientosSeleccionados[1]]->move->name;
+        $pokemon->nombreHabilidad3 = $movimientos[$movimientosSeleccionados[2]]->move->name;
+        $pokemon->nombreHabilidad4 = $movimientos[$movimientosSeleccionados[3]]->move->name;
         $pokemon->save();
     }
 
@@ -110,7 +107,17 @@ class AuthController extends Controller
         $user->password = bcrypt($request->password);
         $user->idEntrenador = $entrenador->id;
         $user->save();
-        return redirect("entrenador/perfil");
+        if (Auth::attempt(
+                [
+                    'idEntrenador' => $entrenador->id,
+                    'password' => $request->password,
+                ], true
+                )){
+            return redirect('entrenador/perfil');
+        }else{
+            flash('Registro exitoso, por favor inicie sesión')->warning()->important();
+            return redirect('/');
+        }
     }
 
     

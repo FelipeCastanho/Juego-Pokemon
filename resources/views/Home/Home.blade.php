@@ -22,7 +22,7 @@
 				</div>
 				<div  class="form-group" id="form-botton">
 				<br> 
-					<form action="{{url('Auth/login')}}" class="formulario" method="POST">
+					<form action="{{url('Auth/register')}}" class="formulario" method="POST">
 						{{csrf_field()}}
 						<div class="form-group">
 							<input type="text" class="form-control" name="nickname" placeholder="Nombre de usuario">
