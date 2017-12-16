@@ -272,6 +272,7 @@ class ComposerStaticInit339428c74f4f7e72698fc75756615f36
 
     public static $classMap = array (
         'AlterPokemon' => __DIR__ . '/../..' . '/database/migrations/2017_12_16_155342_alterPokemon.php',
+        'AlterPokemonType' => __DIR__ . '/../..' . '/database/migrations/2017_12_16_195511_alterPokemonType.php',
         'CreateAlterUsuarioTable' => __DIR__ . '/../..' . '/database/migrations/2017_12_13_200358_create_alter_usuario_table.php',
         'CreateBatallaTable' => __DIR__ . '/../..' . '/database/migrations/2017_12_13_200604_create_batalla_table.php',
         'CreateEntrenadorArtificialTable' => __DIR__ . '/../..' . '/database/migrations/2017_12_13_200455_create_entrenador_artificial_table.php',

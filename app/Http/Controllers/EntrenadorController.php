@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Pokemon;
+use App\Entrenador;
 use App\Batalla;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -27,7 +28,7 @@ class EntrenadorController extends Controller
         $id = Auth::User()->idEntrenador;
     	$entrenador = User::find(Auth::User()->id);
     	$batallas = Batalla::all()->where('idEntrenadorHumano', $id);
-
+        $nickname = Entrenador::find($id)->nickname;
         $pokemons = Pokemon::entrenadorPokemon($id)->get();
         $urlsImagenes = array();
         $habilidades = array();
@@ -38,8 +39,18 @@ class EntrenadorController extends Controller
             array_push($habilidades,$pokemon->nombreHabilidad3);
             array_push($habilidades,$pokemon->nombreHabilidad4);
         }
+        return view("Entrenador.perfil")->with('entrenador', $entrenador)->with('batallas', $batallas)->with('imagenes',$urlsImagenes)->with('habilidades', $habilidades)->with('pokemon',$pokemons)->with('nickname',$nickname)->with('id',$id);
+    }
 
-        return view("Entrenador.perfil")->with('entrenador', $entrenador)->with('batallas', $batallas)->with('imagenes',$urlsImagenes)->with('habilidades', $habilidades);
+     public function editar(Request $request){
+        $id = Auth::User()->idEntrenador;
+        $entrenador = User::findOrFail($id);
+        $entrenador->nombre = $request->nombre;
+        $entrenador->edad = $request->edad;
+        $entrenador->sexo = $request->sexo;
+        $entrenador->pais = $request->pais;
+        $entrenador->save();
+        return redirect('/entrenador/perfil');
     }
 
     public function index(){

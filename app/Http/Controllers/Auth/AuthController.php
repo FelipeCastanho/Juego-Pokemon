@@ -74,6 +74,8 @@ class AuthController extends Controller
         $pokemon->nombreHabilidad2 = $movimientos[$movimientosSeleccionados[1]]->move->name;
         $pokemon->nombreHabilidad3 = $movimientos[$movimientosSeleccionados[2]]->move->name;
         $pokemon->nombreHabilidad4 = $movimientos[$movimientosSeleccionados[3]]->move->name;
+        $pokemon->tipo = $pokemondata->types[0]->type->name;
+        $pokemon->nombre = $pokemondata->name;
         $pokemon->save();
     }
 
@@ -97,30 +99,35 @@ class AuthController extends Controller
      */
 
      public function postRegister(Request $request){
-        $entrenador = new Entrenador();
-        $entrenador->nickname = $request->nickname;
-        $entrenador->save();
+        $entrenador = Entrenador::entrenadorNickname($request->nickname)->get()->first();
 
-        $this->pokemonTeam($entrenador->id);
+        if(sizeOf($entrenador) == 0){
+            $entrenador = new Entrenador();
+            $entrenador->nickname = $request->nickname;
+            $entrenador->save();
 
-        $user = new User();
-        $user->password = bcrypt($request->password);
-        $user->idEntrenador = $entrenador->id;
-        $user->save();
-        if (Auth::attempt(
-                [
-                    'idEntrenador' => $entrenador->id,
-                    'password' => $request->password,
-                ], true
-                )){
-            return redirect('entrenador/perfil');
+            $this->pokemonTeam($entrenador->id);
+
+            $user = new User();
+            $user->password = bcrypt($request->password);
+            $user->idEntrenador = $entrenador->id;
+            $user->save();
+            if (Auth::attempt(
+                    [
+                        'idEntrenador' => $entrenador->id,
+                        'password' => $request->password,
+                    ], true
+                    )){
+                return redirect('entrenador/perfil');
+            }else{
+                flash('Registro exitoso, por favor inicie sesión')->warning()->important();
+                return redirect('/');
+            }
         }else{
-            flash('Registro exitoso, por favor inicie sesión')->warning()->important();
+            flash('El usuario ya se encuentra registrado')->warning()->important();
             return redirect('/');
         }
-    }
-
-    
+    }  
 
     protected function validator(array $data)
     {

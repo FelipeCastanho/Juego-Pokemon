@@ -22,7 +22,7 @@
 				</div>
 				<div  class="form-group" id="form-botton">
 				<br> 
-					<form action="{{url('Auth/register')}}" class="formulario" method="POST">
+					<form class="formulario" method="POST">
 						{{csrf_field()}}
 						<div class="form-group">
 							<input type="text" class="form-control" name="nickname" placeholder="Nombre de usuario">
@@ -32,8 +32,8 @@
 						</div>
 						<br>
 						<div class="form-group">
-							<button id="registro" type="submit" class="btn" name="registro">Registrarme</button>
-							<button id="inicio" type="submit" class="btn" name="inicio">Iniciar sesión</button>
+							<button id="registro" type="submit" class="btn" name="registro" onclick = "this.form.action = '{{url('Auth/register')}}'">Registrarme</button>
+							<button id="inicio" type="submit" class="btn" name="inicio" onclick = "this.form.action = '{{url('Auth/login')}}'" >Iniciar sesión</button>
 						</div>
 						<div class="form-group">
 							<a href="#"><span><img src="{{asset('icons/facebook.png')}}" alt="facebook" width="15%"></span>

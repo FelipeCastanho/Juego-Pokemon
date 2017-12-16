@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AlterPokemon' => $baseDir . '/database/migrations/2017_12_16_155342_alterPokemon.php',
+    'AlterPokemonType' => $baseDir . '/database/migrations/2017_12_16_195511_alterPokemonType.php',
     'CreateAlterUsuarioTable' => $baseDir . '/database/migrations/2017_12_13_200358_create_alter_usuario_table.php',
     'CreateBatallaTable' => $baseDir . '/database/migrations/2017_12_13_200604_create_batalla_table.php',
     'CreateEntrenadorArtificialTable' => $baseDir . '/database/migrations/2017_12_13_200455_create_entrenador_artificial_table.php',
