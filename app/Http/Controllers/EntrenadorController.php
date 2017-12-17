@@ -9,8 +9,6 @@ use App\Entrenador;
 use App\Batalla;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers;
-use Laracasts\Flash\Flash;
 use Auth;
 
 class EntrenadorController extends Controller
@@ -51,16 +49,8 @@ class EntrenadorController extends Controller
         $entrenador->edad = $request->edad;
         $entrenador->sexo = $request->sexo;
         $entrenador->pais = $request->pais;
-        $path = public_path() . '/img/perfiles/';
-        if($request->file('imagenPerfil'))
-        {
-            $imagenPerfil = $request->file('imagenPerfil');
-            $perfilNombre = 'perfilEntrenador_' . time() . '.' . $imagenPerfil->getClientOriginalExtension();
-            $imagenPerfil->move($path, $perfilNombre);
-            $entrenador->imagenPerfil = $perfilNombre;
-        }
         $entrenador->save();
-        return redirect('/entrenador/perfil')->with("message", "Perfil actualizado correctamente");;
+        return redirect('/entrenador/perfil');
     }
 
     public function index(){

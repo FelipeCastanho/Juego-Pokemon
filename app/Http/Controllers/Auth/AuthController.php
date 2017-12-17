@@ -111,7 +111,7 @@ class AuthController extends Controller
             $user = new User();
             $user->password = bcrypt($request->password);
             $user->idEntrenador = $entrenador->id;
-            $user->imagenPerfil = 'perfil.jpg';
+            $user->imagenPerfil = 'pikachu-profile.jpg';
             $user->save();
             if (Auth::attempt(
                     [

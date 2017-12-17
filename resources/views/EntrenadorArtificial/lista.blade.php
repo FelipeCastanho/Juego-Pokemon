@@ -32,7 +32,7 @@
 </div>
 <br>
 <div class="container" id="listartificial" align="center">
-	<h1>Entrenadores artificiales</h1>
+	<h1>Historial de batallas</h1>
 	<br>
 	<table class="table table-bordered table-striped" id="historial">
 		<thead>
