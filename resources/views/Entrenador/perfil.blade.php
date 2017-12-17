@@ -15,10 +15,11 @@
     			<h3 id="nombre">{{$nickname}}</h3>
     		</div>
     		<div class="form-group"	>
-    			<input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="{{$entrenador->nombre}}">
+    			<input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="{{$entrenador->nombre}}" 
+    			minlength="5" maxlength="20">
     		</div>
     		<div class="form-group">
-    			<input type="text" class="form-control" name="edad" id="edad" placeholder="Edad" value="{{$entrenador->edad}}">
+    			<input type="text" class="form-control" name="edad" id="edad" placeholder="Edad" value="{{$entrenador->edad}}" min="5">
     		</div>
     		<div class="form-group" >
     			<select class="form-control" name="sexo" id="sexo" style="text-align:center;">
@@ -33,7 +34,7 @@
     			<input type="text" class="form-control" name="pais" id="pais" placeholder="Pais" value="{{$entrenador->pais}}">
     		</div>	
     		<div class="form-group">
-    			<input type="password" class="form-control" name="password" id="password" placeholder="Contraseña" value="{{$entrenador->password}}" hidden="">
+    			<input type="password" class="form-control" name="password" id="password" placeholder="Contraseña" value="{{$entrenador->password}}" hidden="" min="4" max="15">
     		</div>
     		<div class="form-group">
     			<button style="background-color: transparent !important; border:none;" class="btn btn-primary"><span id="pen-save" class="glyphicon glyphicon-pencil"> </span></button>
