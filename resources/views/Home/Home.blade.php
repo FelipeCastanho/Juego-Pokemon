@@ -25,11 +25,10 @@
 					<form class="formulario" method="POST">
 						{{csrf_field()}}
 						<div class="form-group">
-							<input type="text" class="form-control" name="nickname" placeholder="Nombre de usuario">
+							<input type="text" class="form-control" name="nickname" placeholder="Nombre de usuario" minlength="4" maxlength="10">
 						</div>
 						<div class="form-group">
-							<input type="password" class="form-control" name="password" placeholder="Contraseña">
-						</div>
+							<input type="password" class="form-control" name="password" placeholder="Contraseña" minlength="4" maxlength="15">
 						<br>
 						<div class="form-group">
 							<button id="registro" type="submit" class="btn" name="registro" onclick = "this.form.action = '{{url('Auth/register')}}'">Registrarme</button>

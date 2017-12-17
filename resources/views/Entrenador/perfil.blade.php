@@ -3,10 +3,14 @@
 <div class="container-fluid" align="center">
 	<div id="form-content" class="col-sm-6">
 		<div id="encabezado" class="form-group">
-	    	<img id="portada" src="{{asset('img\perfil.jpg')}}" alt="Portada">
+	    	<img id="portada" src="\ProyectoWWW\public\img\perfiles\{{$entrenador->imagenPerfil}}" alt="Portada">
 	    </div>
-    	<form action="{{url('entrenador/editar')}}" class="formulario" id="form-perfil" method="POST">
+    	<form action="{{url('entrenador/editar')}}" class="formulario" id="form-perfil" method="POST" enctype="multipart/form-data" >
     		{{csrf_field()}}
+    		<div id="imgPerfil" class="glyphicon glyphicon-camera" align="center">
+			    <input id="imagenPerfil" type="file" name="imagenPerfil">
+			</div>
+			<br>
     		<div class="form-group">
     			<h3 id="nombre">{{$nickname}}</h3>
     		</div>
@@ -32,7 +36,7 @@
     			<input type="password" class="form-control" name="password" id="password" placeholder="Contraseña" value="{{$entrenador->password}}" hidden="">
     		</div>
     		<div class="form-group">
-    			<button style="background-color: transparent !important; border:none;"><span id="pen-save" class="glyphicon glyphicon-pencil"> </span></button>
+    			<button style="background-color: transparent !important; border:none;" class="btn btn-primary"><span id="pen-save" class="glyphicon glyphicon-pencil"> </span></button>
 		    		
 		    	</a>	
     		</div>

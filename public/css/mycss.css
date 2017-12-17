@@ -63,9 +63,6 @@
     position: relative;
     width: 125px;
     display: block;
-    margin-left: 5%;
-    margin-bottom: 5%;
-    
 }
 
 #portada {
@@ -74,11 +71,6 @@
     left: 0;
     top: 0;
     width: 125px;
-}
-
-#pen{
-    font-size: 130%;
-    color: #045FB4;
 }
 
 #pen-save{
@@ -188,4 +180,20 @@ div.scrollmenu a:hover {
 #guardar{
   font-size: 150%;
   width: 10%;
+}
+
+#imgPerfil{
+    font-size: 30px;
+    color: #045FB4;
+}
+
+#imagenPerfil{
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    opacity: 0;
 }
