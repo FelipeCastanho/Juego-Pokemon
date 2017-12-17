@@ -63,6 +63,41 @@ class EntrenadorController extends Controller
         return redirect('/entrenador/perfil');
     }
 
+    public function editarPokemon(Request $request){
+        $usuario = User::find(Auth::User()->id);
+        $pokemon = Pokemon::find($request->pokemon);
+        $wins = $usuario->cbg;
+
+        $numero = rand(1, 386);
+        $data = file_get_contents('http://pokeapi.co/api/v2/pokemon/'.$numero.'/');
+        $pokemondata = json_decode($data);
+        $movimientos = $pokemondata->moves;
+
+        $max = sizeof($movimientos)-1;
+        $x = 0;
+        $movimientosSeleccionados = array();
+        while ($x<4) {
+          $num_aleatorio = rand(1,$max);
+          if (!in_array($num_aleatorio,$movimientosSeleccionados)) {
+            array_push($movimientosSeleccionados,$num_aleatorio);
+            $x++;
+          }
+        }
+        $pokemon->numeroPokemon = $numero;
+        $pokemon->nombreHabilidad1 = $movimientos[$movimientosSeleccionados[0]]->move->name;
+        $pokemon->nombreHabilidad2 = $movimientos[$movimientosSeleccionados[1]]->move->name;
+        $pokemon->nombreHabilidad3 = $movimientos[$movimientosSeleccionados[2]]->move->name;
+        $pokemon->nombreHabilidad4 = $movimientos[$movimientosSeleccionados[3]]->move->name;
+        $pokemon->tipo = $pokemondata->types[0]->type->name;
+        $pokemon->nombre = $pokemondata->name;
+        $pokemon->save();
+
+        $usuario->cbg = $wins-10;
+        $usuario->save();
+
+        return redirect('/entrenador/perfil');
+    }
+
     public function index(){
         return View('Entrenador.home');
     }

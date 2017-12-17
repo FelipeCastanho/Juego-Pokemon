@@ -59,7 +59,7 @@
 	    				<li>{{ucwords($habilidades[3])}}<br></li>
 	    				@if($batallasGanadas >= 10)
 	    				<br>
-	    				<button class='btn cambiarPokemon'>Cambiar</button>
+	    				<a href='{{url('entrenador/editarPokemon',['pokemon' => $pokemon[0]])}}' class='btn cambiarPokemon'>Cambiar</a>
 	    				@endif
 	    			</strong>
 	    			</div>"
@@ -75,7 +75,7 @@
 	    				<li>{{ucwords($habilidades[7])}}<br></li>
 	    				@if($batallasGanadas >= 10)
 	    				<br>
-	    				<button class='btn cambiarPokemon'>Cambiar</button>
+	    				<a href='{{url('entrenador/editarPokemon',['pokemon' => $pokemon[1]])}}' class='btn cambiarPokemon'>Cambiar</a>
 	    				@endif
 	    			</strong>
 	    			</div>"
@@ -91,7 +91,7 @@
 	    				<li>{{ucwords($habilidades[11])}}<br></li>
 	    				@if($batallasGanadas >= 10)
 	    				<br>
-	    				<button class='btn cambiarPokemon'>Cambiar</button>
+	    				<a href='{{url('entrenador/editarPokemon',['pokemon' => $pokemon[2]])}}' class='btn cambiarPokemon'>Cambiar</a>
 	    				@endif
 	    			</strong>
 	    			</div>"
@@ -107,7 +107,7 @@
 	    				<li>{{ucwords($habilidades[15])}}<br></li>
 	    				@if($batallasGanadas >= 10)
 	    				<br>
-	    				<button class='btn cambiarPokemon'>Cambiar</button>
+	    				<a href='{{url('entrenador/editarPokemon',['pokemon' => $pokemon[3]])}}' class='btn cambiarPokemon'>Cambiar</a>
 	    				@endif
 	    			</strong>
 	    			</div>"
@@ -123,7 +123,7 @@
 	    				<li>{{ucwords($habilidades[19])}}<br></li>
 	    				@if($batallasGanadas >= 10)
 	    				<br>
-	    				<button class='btn cambiarPokemon'>Cambiar</button>
+	    				<a href='{{url('entrenador/editarPokemon',['pokemon' => $pokemon[4]])}}' class='btn cambiarPokemon'>Cambiar</a>
 	    				@endif
 	    			</strong>
 	    			</div>"
@@ -139,7 +139,7 @@
 	    				<li>{{ucwords($habilidades[23])}}<br></li>
 	    				@if($batallasGanadas >= 10)
 	    				<br>
-	    				<button class='btn cambiarPokemon'>Cambiar</button>
+	    				<a href='{{url('entrenador/editarPokemon',['pokemon' => $pokemon[5]])}}' class='btn cambiarPokemon'>Cambiar</a>
 	    				@endif
 	    			</strong>
 	    			</div>"

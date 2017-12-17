@@ -15,6 +15,7 @@ Route::get('entrenador/', 'EntrenadorController@index');
 
 Route::get('entrenador/perfil', 'EntrenadorController@perfil');
 Route::post('entrenador/editar', 'EntrenadorController@editar');
+Route::get('entrenador/editarPokemon/{pokemon}', [ 'uses' => 'EntrenadorController@editarPokemon', 'as' => 'entrenador/editarPokemon']);
 
 Route::post('artificial/perfil', 'ArtificialController@perfil');
 
