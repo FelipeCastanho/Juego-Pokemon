@@ -17,3 +17,6 @@ Route::post('artificial/perfil', 'ArtificialController@perfil');
 
 Route::get('artificial/registro', 'ArtificialController@registro');
 Route::post('artificial/registrar', 'ArtificialController@registrar');
+
+Route::get('auth/{provider}', 'Auth\AuthController@redirect');
+Route::get('auth/{provider}/callback', 'Auth\AuthController@Callback');
