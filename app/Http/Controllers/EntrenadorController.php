@@ -40,7 +40,7 @@ class EntrenadorController extends Controller
             array_push($habilidades,$pokemon->nombreHabilidad3);
             array_push($habilidades,$pokemon->nombreHabilidad4);
         }
-        return view("Entrenador.perfil")->with('entrenador', $entrenador)->with('batallas', $batallas)->with('imagenes',$urlsImagenes)->with('habilidades', $habilidades)->with('pokemon',$pokemons)->with('nickname',$nickname)->with('id',$id);
+        return view("Entrenador.perfil")->with('entrenador', $entrenador)->with('batallas', $batallas)->with('imagenes',$urlsImagenes)->with('habilidades', $habilidades)->with('pokemon',$pokemons)->with('nickname',$nickname)->with('id',$id)->with('batallasGanadas',$entrenador->cbg);
     }
 
      public function editar(Request $request){

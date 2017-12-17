@@ -197,3 +197,8 @@ div.scrollmenu a:hover {
     position: absolute;
     opacity: 0;
 }
+
+.cambiarPokemon{
+    width: 100%;
+    font-size: 10px;
+}

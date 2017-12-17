@@ -57,6 +57,10 @@
 	    				<li>{{ucwords($habilidades[1])}}<br></li>
 	    				<li>{{ucwords($habilidades[2])}}<br></li>
 	    				<li>{{ucwords($habilidades[3])}}<br></li>
+	    				@if($batallasGanadas >= 10)
+	    				<br>
+	    				<button class='btn cambiarPokemon'>Cambiar</button>
+	    				@endif
 	    			</strong>
 	    			</div>"
 	    			data-placement="bottom" data-toggle="popover">
@@ -69,6 +73,10 @@
 	    				<li>{{ucwords($habilidades[5])}}<br></li>
 	    				<li>{{ucwords($habilidades[6])}}<br></li>
 	    				<li>{{ucwords($habilidades[7])}}<br></li>
+	    				@if($batallasGanadas >= 10)
+	    				<br>
+	    				<button class='btn cambiarPokemon'>Cambiar</button>
+	    				@endif
 	    			</strong>
 	    			</div>"
 	    			data-placement="bottom" data-toggle="popover">
@@ -81,6 +89,10 @@
 	    				<li>{{ucwords($habilidades[9])}}<br></li>
 	    				<li>{{ucwords($habilidades[10])}}<br></li>
 	    				<li>{{ucwords($habilidades[11])}}<br></li>
+	    				@if($batallasGanadas >= 10)
+	    				<br>
+	    				<button class='btn cambiarPokemon'>Cambiar</button>
+	    				@endif
 	    			</strong>
 	    			</div>"
 	    			data-placement="bottom" data-toggle="popover">
@@ -93,6 +105,10 @@
 	    				<li>{{ucwords($habilidades[13])}}<br></li>
 	    				<li>{{ucwords($habilidades[14])}}<br></li>
 	    				<li>{{ucwords($habilidades[15])}}<br></li>
+	    				@if($batallasGanadas >= 10)
+	    				<br>
+	    				<button class='btn cambiarPokemon'>Cambiar</button>
+	    				@endif
 	    			</strong>
 	    			</div>"
 	    			data-placement="bottom" data-toggle="popover">
@@ -105,6 +121,10 @@
 	    				<li>{{ucwords($habilidades[17])}}<br></li>
 	    				<li>{{ucwords($habilidades[18])}}<br></li>
 	    				<li>{{ucwords($habilidades[19])}}<br></li>
+	    				@if($batallasGanadas >= 10)
+	    				<br>
+	    				<button class='btn cambiarPokemon'>Cambiar</button>
+	    				@endif
 	    			</strong>
 	    			</div>"
 	    			data-placement="bottom" data-toggle="popover">
@@ -117,6 +137,10 @@
 	    				<li>{{ucwords($habilidades[21])}}<br></li>
 	    				<li>{{ucwords($habilidades[22])}}<br></li>
 	    				<li>{{ucwords($habilidades[23])}}<br></li>
+	    				@if($batallasGanadas >= 10)
+	    				<br>
+	    				<button class='btn cambiarPokemon'>Cambiar</button>
+	    				@endif
 	    			</strong>
 	    			</div>"
 	    			data-placement="bottom" data-toggle="popover">
