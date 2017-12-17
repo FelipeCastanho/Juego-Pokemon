@@ -26,3 +26,5 @@ Route::get('Auth/{provider}', 'Auth\AuthController@redirectToProvider');
 Route::get('Auth/{provider}/callback', 'Auth\AuthController@handleProviderCallback');
 
 Route::get('batalla', 'BatallaController@index');
+
+Route::resource('api/users', 'UserController');

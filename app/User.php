@@ -13,7 +13,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'provider','provider_id',
+        'name', 'email', 'password',
     ];
 
     /**
@@ -24,4 +24,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function scopefindUser($query, $id){
+        return $query->where('idEntrenador', $id);
+    }    
 }
