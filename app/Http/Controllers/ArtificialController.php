@@ -23,8 +23,17 @@ class ArtificialController extends Controller
     }
     
     public function perfil(Request $request){
-        
-        return view("EntrenadorArtificial.perfil");
+        $pokemons = Pokemon::entrenadorPokemon($request->id)->get();
+        $urlsImagenes = array();
+        $habilidades = array();
+        foreach ($pokemons as $pokemon) {
+            array_push($urlsImagenes, "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/".$pokemon->numeroPokemon.".png");
+            array_push($habilidades,$pokemon->nombreHabilidad1);
+            array_push($habilidades,$pokemon->nombreHabilidad2);
+            array_push($habilidades,$pokemon->nombreHabilidad3);
+            array_push($habilidades,$pokemon->nombreHabilidad4);
+        }
+        return view("EntrenadorArtificial.perfil")->with('imagenes',$urlsImagenes)->with('habilidades',$habilidades)->with('pokemon',$pokemons);
     }
 
     public function registro(Request $request){
@@ -82,19 +91,25 @@ class ArtificialController extends Controller
     }
 
     public function registrar(Request $request){
-        $entrenador = new Entrenador();
-        $entrenador->nickname = $request->nombre;
-        $entrenador->save();
 
-        $this->pokemonTeam($request->chose,$entrenador->id); 
+        if(sizeof($request->chose) == 6){
+            $entrenador = new Entrenador();
+            $entrenador->nickname = $request->nombre;
+            $entrenador->save();
 
-        $id = Auth::User()->idEntrenador;
-        $ea = new EntrenadorArtificial();
-        $ea->dificultad = $request->dificultad;
-        $ea->idEntrenador = $entrenador->id;
-        $ea->idDueno = $id;
-        $ea->save();
+            $this->pokemonTeam($request->chose,$entrenador->id); 
 
-        return redirect('artificial/registro');
+            $id = Auth::User()->idEntrenador;
+            $ea = new EntrenadorArtificial();
+            $ea->dificultad = $request->dificultad;
+            $ea->idEntrenador = $entrenador->id;
+            $ea->idDueno = $id;
+            $ea->save();
+
+            return redirect('artificial/registro');
+        }else{
+            flash('Debe escoger exactamente 6 pokemon')->warning()->important();
+            return redirect('artificial/registro')->withInput();
+        }
     }
 }

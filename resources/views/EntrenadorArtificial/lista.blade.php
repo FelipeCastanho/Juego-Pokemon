@@ -3,6 +3,8 @@
 <div class="container" align="center">
 	<h1>Registrar entrenador artificial</h1>
 	<br>
+	@include('flash::message')
+	<br>
 	<form method="POST" action="{{url('artificial/registrar')}}">
 		{{csrf_field()}}
 		<div class="form-group">
@@ -46,7 +48,7 @@
 					<td>
 						<form method="POST" action="{{url('artificial/perfil')}}">
 							{{csrf_field()}}
-							<input type="text" name="id" value="{{$entrenadorArtificial->id}}" hidden="">
+							<input type="text" name="id" value="{{$entrenadorArtificial->idEntrenador}}" hidden="">
 							<button style="background-color: transparent !important; border:none;"><span class="glyphicon glyphicon-eye-open"> </span></button>
 						</form>
 					</td>
