@@ -3,10 +3,10 @@
 <div class="container-fluid" align="center">
 	<div id="form-content" class="col-sm-6">
 		<div id="encabezado" class="form-group">
-	    	<img id="portada" src="{{asset('img/pikachu-profile.jpg')}}" alt="Portada">
-	    	<a href="#">
-	    		<span  id="pen" class="glyphicon glyphicon-pencil"> </span>
-	    	</a>	
+	    	<img id="portada" src="\ProyectoWWW\public\img\{{$entrenador->imagenPerfil}}" alt="Portada">
+	    	<span class="btn btn-primary">
+    			 <input type="file">
+			</span>
 	    </div>
     	<form action="{{url('entrenador/editar')}}" class="formulario" id="form-perfil" method="POST">
     		{{csrf_field()}}
