@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddIdArtificial' => $baseDir . '/database/migrations/2017_12_16_235522_addIdArtificial.php',
     'AlterPokemon' => $baseDir . '/database/migrations/2017_12_16_155342_alterPokemon.php',
     'AlterPokemonType' => $baseDir . '/database/migrations/2017_12_16_195511_alterPokemonType.php',
     'CreateAlterUsuarioTable' => $baseDir . '/database/migrations/2017_12_13_200358_create_alter_usuario_table.php',
@@ -88,6 +89,7 @@ return array(
     'Hamcrest\\Util' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
     'Hamcrest\\Xml\\HasXPath' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
     'IlluminateQueueClosure' => $vendorDir . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
+    'ModificarDificultad' => $baseDir . '/database/migrations/2017_12_17_000216_modificarDificultad.php',
     'PHPUnit\\Framework\\Assert' => $vendorDir . '/phpunit/phpunit/src/ForwardCompatibility/Assert.php',
     'PHPUnit\\Framework\\AssertionFailedError' => $vendorDir . '/phpunit/phpunit/src/ForwardCompatibility/AssertionFailedError.php',
     'PHPUnit\\Framework\\BaseTestListener' => $vendorDir . '/phpunit/phpunit/src/ForwardCompatibility/BaseTestListener.php',

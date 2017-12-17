@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\Entrenador;
+use App\EntrenadorArtificial;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -25,7 +27,23 @@ class ArtificialController extends Controller
     }
 
     public function registro(Request $request){
-        
-        return view("EntrenadorArtificial.lista");
+        $id = Auth::User()->idEntrenador;
+        $ea = EntrenadorArtificial::all()->where('idDueno', $id);
+        return view("EntrenadorArtificial.lista")->with('lista',$ea);
+    }
+
+    public function registrar(Request $request){
+        $entrenador = new Entrenador();
+        $entrenador->nickname = $request->nombre;
+        $entrenador->save();
+
+        //$this->pokemonTeam($entrenador->id); Aqui vas tú :v
+        $id = Auth::User()->idEntrenador;
+        $ea = new EntrenadorArtificial();
+        $ea->dificultad = $request->dificultad;
+        $ea->idEntrenador = $entrenador->id;
+        $ea->idDueno = $id;
+        $ea->save();
+        return redirect('artificial/registro');
     }
 }

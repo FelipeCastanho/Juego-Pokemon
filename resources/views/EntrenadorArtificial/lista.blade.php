@@ -3,13 +3,14 @@
 <div class="container" align="center">
 	<h1>Registrar entrenador artificial</h1>
 	<br>
-	<form>
+	<form method="POST" action="{{url('artificial/registrar')}}">
+		{{csrf_field()}}
 		<div class="form-group">
-			<input type="text" class="form-control" id="nombre" placeholder="Nombre" value="">
+			<input type="text" class="form-control" id="nombre" placeholder="Nombre" value="" name="nombre" required="">
 		</div>
 		<div class="form-group">
-			<select class="form-control" id="sexo" style="text-align:center;">
-				<option > Selecciona la dificultad </option>
+			<select class="form-control" id="sexo" name="dificultad" style="text-align:center;" required="">
+				<option value=""> Selecciona la dificultad </option>
 				<option id="aprendiz" value="Aprendiz"> Aprendiz </option>
 				<option id="aficionado" value="Aficionado"> Aficionado </option>
 				<option id="profesional" value="Profesional"> Profesional </option>
@@ -31,26 +32,19 @@
 			<th> </th>
 		</thead>
 		<tbody>
-			<tr>
-				<td> Entrenador artificial </td>
-				<td> Aprendiz </td>
-				<td><a href="#"><span class="glyphicon glyphicon-eye-open"> </span></a>	</td>
-			</tr>
-			<tr>
-				<td> Entrenador artificial Ash </td>
-				<td> Aficionado </td>
-				<td><a href="#"><span class="glyphicon glyphicon-eye-open"> </span></a>	</td>
-			</tr>
-			<tr>
-				<td> Entrenador artificial Ismael </td>
-				<td> Profesional </td>
-				<td><a href="#"><span class="glyphicon glyphicon-eye-open"> </span></a>	</td>
-			</tr>
-			<tr>
-				<td> Entrenador artificial Pikaboss </td>
-				<td> Leyenda </td>
-				<td><a href="#"><span class="glyphicon glyphicon-eye-open"> </span></a>	</td>
+			@foreach($lista as $entrenadorArtificial)
+				<tr>
+					<td> {{$entrenadorArtificial->entrenador->nickname}} </td>
+					<td> {{$entrenadorArtificial->dificultad}}  </td>
+					<td>
+						<form method="POST" action="{{url('artificial/perfil')}}">
+							{{csrf_field()}}
+							<input type="text" name="id" value="{{$entrenadorArtificial->id}}" hidden="">
+							<button style="background-color: transparent !important; border:none;"><span class="glyphicon glyphicon-eye-open"> </span></button>
+						</form>
+					</td>
 				</tr>
+			 @endforeach
 		</tbody>
 	</table>
 </div>

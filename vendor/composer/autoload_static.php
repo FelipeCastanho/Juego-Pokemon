@@ -271,6 +271,7 @@ class ComposerStaticInit339428c74f4f7e72698fc75756615f36
     );
 
     public static $classMap = array (
+        'AddIdArtificial' => __DIR__ . '/../..' . '/database/migrations/2017_12_16_235522_addIdArtificial.php',
         'AlterPokemon' => __DIR__ . '/../..' . '/database/migrations/2017_12_16_155342_alterPokemon.php',
         'AlterPokemonType' => __DIR__ . '/../..' . '/database/migrations/2017_12_16_195511_alterPokemonType.php',
         'CreateAlterUsuarioTable' => __DIR__ . '/../..' . '/database/migrations/2017_12_13_200358_create_alter_usuario_table.php',
@@ -353,6 +354,7 @@ class ComposerStaticInit339428c74f4f7e72698fc75756615f36
         'Hamcrest\\Util' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
         'Hamcrest\\Xml\\HasXPath' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
         'IlluminateQueueClosure' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Queue/IlluminateQueueClosure.php',
+        'ModificarDificultad' => __DIR__ . '/../..' . '/database/migrations/2017_12_17_000216_modificarDificultad.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/Assert.php',
         'PHPUnit\\Framework\\AssertionFailedError' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/AssertionFailedError.php',
         'PHPUnit\\Framework\\BaseTestListener' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/BaseTestListener.php',
