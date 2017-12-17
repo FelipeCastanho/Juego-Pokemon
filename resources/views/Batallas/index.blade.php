@@ -14,22 +14,22 @@
 	<div class="container" align="center">
 		<div class="form-group" id="myPokemons">
 			<div>
-				<img width="20%" src="{{$imagenes[0]}}" alt="Portada" id="pok1">
+				<img width="8%" src="{{$imagenes[0]}}" alt="Portada" id="pok1">
 			</div>
 			<div>
-				<img width="20%" src="{{$imagenes[1]}}" alt="Portada" id="pok2">
+				<img width="8%" src="{{$imagenes[1]}}" alt="Portada" id="pok2">
 			</div>
 			<div>
-				<img width="20%" src="{{$imagenes[2]}}" alt="Portada" id="pok3">
+				<img width="8%" src="{{$imagenes[2]}}" alt="Portada" id="pok3">
 			</div>
 			<div>
-				<img width="20%" src="{{$imagenes[3]}}" alt="Portada" id="pok4">
+				<img width="8%" src="{{$imagenes[3]}}" alt="Portada" id="pok4">
 			</div>
 			<div>
-				<img width="20%" src="{{$imagenes[4]}}" alt="Portada" id="pok5">
+				<img width="8%" src="{{$imagenes[4]}}" alt="Portada" id="pok5">
 			</div>
 			<div>
-				<img width="20%" src="{{$imagenes[5]}}" alt="Portada" id="pok6">
+				<img width="8%" src="{{$imagenes[5]}}" alt="Portada" id="pok6">
 			</div>
     	</div>
 	</div>
