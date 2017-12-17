@@ -5,33 +5,20 @@
 	<div id="form-content" class="col-sm-6">
 		<div id="encabezado" class="form-group">
 	    	<img id="portada" src="{{asset('img/pikachu-profile.jpg')}}" alt="Portada">
-	    	<a href="#">
-	    		<span  id="pen" class="glyphicon glyphicon-pencil"> </span>
-	    	</a>	
 	    </div>
     	<form class="formulario" id="form-perfil">
     		<div class="form-group"	>
     			<input type="text" class="form-control" id="nombre" placeholder="Nombre">
     		</div>
     		<div class="form-group">
-    			<input type="text" class="form-control" id="edad" placeholder="Edad">
-    		</div>
-    		<div class="form-group" >
-    			<select class="form-control" id="sexo" style="text-align:center;">
-    				<option> Sexo </option>
-    				<option id="femenino" value="Femenino"> Femenino </option>
-    				<option id="masculino" value="Masculino"> Masculino </option>
-    			</select> 
-    		</div>
-    		<div class="form-group">
-    			<input type="text" class="form-control" id="pais" placeholder="Pais">
-    		</div>	
-    		<div class="form-group">
-    			<input type="text" class="form-control" id="nickname" placeholder="Nombre de usuario">
-    		</div>
-    		<div class="form-group">
-    			<input type="password" class="form-control" id="password" placeholder="Contraseña">
-    		</div>
+				<select class="form-control" id="sexo" name="dificultad" style="text-align:center;">
+					<option value=""> Selecciona la dificultad </option>
+					<option id="aprendiz" value="Aprendiz"> Aprendiz </option>
+					<option id="aficionado" value="Aficionado"> Aficionado </option>
+					<option id="profesional" value="Profesional"> Profesional </option>
+					<option id="leyenda" value="Leyenda"> Leyenda </option>
+				</select> 
+			</div>
     		<div class="form-group">
     			<a href="#">
 		    		<span id="pen-save" class="glyphicon glyphicon-pencil"> </span>
