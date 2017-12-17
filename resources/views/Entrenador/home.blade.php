@@ -17,7 +17,7 @@
 		</div>
 		<br>
 		<div align="center">
-			<a href="" id="botondos" class="btn btn-default"> Entrar a batalla </a>
+			<a href="{{url('batalla')}}" id="botondos" class="btn btn-default"> Entrar a batalla </a>
 		</div>
 	</div>
 </div>
