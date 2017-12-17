@@ -124,7 +124,7 @@
     </div>
 </div>
 <br>
-<div class="container" id="batallas-table">
+<div class="container" id="batallas-table" align="center">
 	<h1>Historial de batallas</h1>
 	<br>
 	<table class="table table-bordered table-striped" id="historial">
