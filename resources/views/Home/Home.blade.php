@@ -36,9 +36,9 @@
 							<button id="inicio" type="submit" class="btn" name="inicio" onclick = "this.form.action = '{{url('Auth/login')}}'" >Iniciar sesión</button>
 						</div>
 						<div class="form-group">
-							<a href="{{ url('/auth/facebook') }}"><span><img src="{{asset('icons/facebook.png')}}" alt="facebook" width="15%"></span>
-							<a href="{{ url('/auth/twitter') }}"><span><img src="{{asset('icons/twitter.png')}}" alt="twitter" width="10%"></span>
-							<a href="{{ url('/auth/google') }}"><span><img src="{{asset('icons/google.png')}}" alt="google+" width="10%"></span>
+							<a href="{{ url('/Auth/facebook') }}"><span><img src="{{asset('icons/facebook.png')}}" alt="facebook" width="15%"></span>
+							<a href="{{ url('/Auth/twitter') }}"><span><img src="{{asset('icons/twitter.png')}}" alt="twitter" width="10%"></span>
+							<a href="{{ url('/Auth/google') }}"><span><img src="{{asset('icons/google.png')}}" alt="google+" width="10%"></span>
 						</div>
 					</form>	
 				</div>

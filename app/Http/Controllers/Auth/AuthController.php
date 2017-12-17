@@ -50,54 +50,6 @@ class AuthController extends Controller
         $this->middleware($this->guestMiddleware(), ['except' => 'getLogout']);
     }
 
-    /**
-     * Redirect the user to the OAuth Provider.
-     *
-     * @return Response
-     */
-    public function redirect($provider)
-    {
-        return Socialite::driver($provider)->redirect();
-    }
-
-    /**
-     * Obtain the user information from provider.  Check if the user already exists in our
-     * database by looking up their provider_id in the database.
-     * If the user exists, log them in. Otherwise, create a new user then log them in. After that 
-     * redirect them to the authenticated users homepage.
-     *
-     * @return Response
-     */
-    public function Callback($provider)
-    {
-        $user = Socialite::driver($provider)->user();
-
-        $authUser = $this->findOrCreateUser($user, $provider);
-        Auth::login($authUser, true);
-        return redirect($this->redirectTo);
-    }
-
-    /**
-     * If a user has registered before using social auth, return the user
-     * else, create a new user object.
-     * @param  $user Socialite user object
-     * @param $provider Social auth provider
-     * @return  User
-     */
-    public function findOrCreateUser($user, $provider)
-    {
-        $authUser = User::where('provider_id', $user->id)->first();
-        if ($authUser) {
-            return $authUser;
-        }
-        return User::create([
-            'name'     => $user->name,
-            'email'    => $user->email,
-            'provider' => $provider,
-            'provider_id' => $user->id
-        ]);
-    }
-
     public function pokemonHabilities($idPokemon, $idEntrenador){
         ini_set('max_execution_time', 180);
         $base = 'http://pokeapi.co/api/v2/pokemon/';
@@ -231,4 +183,67 @@ class AuthController extends Controller
             return redirect('/');
         }
     }
+
+// login con redes sociales
+
+    /**
+     * Redirect the user to the OAuth Provider.
+     *
+     * @return Response
+     */
+    public function redirectToProvider($provider)
+    {
+        return Socialite::driver($provider)->redirect();
+    }
+
+    /**
+     * Obtain the user information from provider.  Check if the user already exists in our
+     * database by looking up their provider_id in the database.
+     * If the user exists, log them in. Otherwise, create a new user then log them in. After that 
+     * redirect them to the authenticated users homepage.
+     *
+     * @return Response
+     */
+    public function handleProviderCallback($provider)
+    {
+        $user = Socialite::driver($provider)->user();
+
+        $authUser = $this->findOrCreateUser($user, $provider);
+        Auth::login($authUser, true);
+        //var_dump($user['gender']);
+        return redirect($this->redirectTo);
+    }
+
+    /**
+     * If a user has registered before using social auth, return the user
+     * else, create a new user object.
+     * @param  $user Socialite user object
+     * @param $provider Social auth provider
+     * @return  User
+     */
+    public function findOrCreateUser($user, $provider)
+    {
+        $authUser = User::where('provider_id', $user->getId())->first();
+        if ($authUser) {
+            return $authUser;
+        }
+
+        $entrenador = new Entrenador();
+        $entrenador->nickname = $request->nickname;
+        $entrenador->save();
+
+        $this->pokemonTeam($entrenador->id);
+
+        $usuario = new User();
+        $usuario->nombre = $user->name;
+        $usuario->email = $user->email;
+        $usuario->password = bcrypt($request->password);
+        $usuario->idEntrenador = $entrenador->id;
+        $usuario->imagenPerfil = 'pikachu-profile.jpg';
+        $usuario->provider = $provider;
+        $usuario->provider_id = $user->getId();
+        $usuario->save();
+
+        return $usuario;
+    }    
 }

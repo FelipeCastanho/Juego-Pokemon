@@ -1,10 +1,13 @@
 <?php
 
 Route::get('/', 'HomeController@home');
+Route::get('/home', 'HomeController@home');
 
 
 Route::post('Auth/register', 'Auth\AuthController@postRegister');
+Route::get('Auth/register', 'Auth\AuthController@getRegister');
 
+Route::get('Auth/login', 'Auth\AuthController@getLogin');
 Route::post('Auth/login', 'Auth\AuthController@postLogin');
 Route::get('Auth/logout', 'Auth\AuthController@getLogout');
 
@@ -18,5 +21,5 @@ Route::post('artificial/perfil', 'ArtificialController@perfil');
 Route::get('artificial/registro', 'ArtificialController@registro');
 Route::post('artificial/registrar', 'ArtificialController@registrar');
 
-Route::get('auth/{provider}', 'Auth\AuthController@redirect');
-Route::get('auth/{provider}/callback', 'Auth\AuthController@Callback');
+Route::get('Auth/{provider}', 'Auth\AuthController@redirectToProvider');
+Route::get('Auth/{provider}/callback', 'Auth\AuthController@handleProviderCallback');
