@@ -202,23 +202,3 @@ div.scrollmenu a:hover {
     width: 100%;
     font-size: 10px;
 }
-
-#divPiedra{
-    position: absolute;
-    width: 120%;
-    height: 120%;
-    margin-left: 15%;
-}
-
-#divPapel{
-    position: absolute;
-    width: 120%;
-    height: 120%;
-    margin-left: 40%;
-}
-
-#divTijeras{
-    position: absolute;
-    width: 120%;
-    height: 120%;
-    margin-left: 65%;
