@@ -17,6 +17,13 @@
 				<option id="leyenda" value="Leyenda"> Leyenda </option>
 			</select> 
 		</div>
+		<div class="form-group">
+			<select data-placeholder="Escoge 6 pokémon" class="form-control" name="chose[]" id="chose" style="text-align:center;" required="" multiple>
+				@foreach($nombres as $nombre)
+					<option value="{{$nombre[0]}}">{{$nombre[1]}}</option>
+				@endforeach
+			</select> 
+		</div>
 		<br>
 		<button id="guardar" class="btn btn-default">Guardar</button>
 	</form>
@@ -48,4 +55,12 @@
 		</tbody>
 	</table>
 </div>
+@endsection
+
+@section('js')
+
+<script>
+	$('#chose').chosen({max_selected_options: 6});
+</script>
+
 @endsection
