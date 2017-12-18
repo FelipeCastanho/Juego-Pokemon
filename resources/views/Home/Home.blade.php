@@ -20,7 +20,6 @@
 		    	¡Estamos preparando un equipo Pokemón ideal para ti!
 		    </div>
 		  </div>
-
 		</div>
 		<div class="container" id="form-content" align="center">
 			@include('flash::message')
@@ -59,28 +58,6 @@
   		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-		<script>
-			$(document).ready(function(){
-				var x = 1;
-				$('#progress-bar').hide();
-				function bar(){
-					$("#registro").click(function(){
-						var nick = document.getElementById("nickname").value;
-						var pass = document.getElementById("password").value;
-						if (nick.length >= 4 && pass.length >= 4 && nick.length <= 10 && pass.length <= 15) {
-							$("#progress-bar").show();
-							progress(x);
-						}
-					});
-				}
-				
-				function progress(){
-					document.getElementById("barra").style.width = x +"%";
-					x += 2;
-				}
-				setInterval(bar, 95);
-			});
-		</script>
-
+		<script src="{{asset('js/progressbar.js')}}"></script>
 	</body>
 </html>

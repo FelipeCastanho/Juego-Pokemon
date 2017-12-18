@@ -104,6 +104,7 @@
 }
 
 #historial{
+    margin-bottom: 5%;
     background-color: #fff;
     border-width: 5px;
     border-color: #DDD;
@@ -122,6 +123,10 @@ body{
 footer{
     color: #fff;
     background-color: #1f1f1f;
+    position: fixed;
+    left:0px;
+    bottom:0px;
+    width:100%;
 }
 
 .form-control{
