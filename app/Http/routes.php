@@ -2,7 +2,6 @@
 
 Route::get('/', 'HomeController@home');
 Route::get('/home', 'HomeController@home');
-Route::get('acercade','HomeController@acercade');
 
 Route::post('Auth/register', 'Auth\AuthController@postRegister');
 Route::get('Auth/register', 'Auth\AuthController@getRegister');
@@ -13,10 +12,11 @@ Route::get('Auth/logout', 'Auth\AuthController@getLogout');
 
 Route::get('entrenador/', 'EntrenadorController@index');
 
+
 Route::get('entrenador/perfil', 'EntrenadorController@perfil');
 Route::post('entrenador/editar', 'EntrenadorController@editar');
 Route::get('entrenador/editarPokemon/{pokemon}', [ 'uses' => 'EntrenadorController@editarPokemon', 'as' => 'entrenador/editarPokemon']);
-
+Route::get('entrenador/acercade','EntrenadorController@acercade');
 Route::post('artificial/perfil', 'ArtificialController@perfil');
 Route::get('artificial/perfil', 'ArtificialController@perfil');
 Route::post('artificial/modificar', 'ArtificialController@modificar');
