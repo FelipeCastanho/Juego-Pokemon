@@ -18,4 +18,7 @@ class Entrenador extends Model
         return $this->hasMany('App\Batalla', 'idEntrenadorHumano', 'id');
     }  
 
+    public function artificial(){
+    	return $this->hasOne('App\EntrenadorArtificial', 'idEntrenador', 'id');
+    }
 }

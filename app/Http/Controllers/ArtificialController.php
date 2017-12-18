@@ -9,6 +9,7 @@ use App\EntrenadorArtificial;
 use App\Pokemon;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use flash;
 
 class ArtificialController extends Controller
 {
@@ -23,6 +24,7 @@ class ArtificialController extends Controller
     }
     
     public function perfil(Request $request){
+        $entrenador = Entrenador::find($request->id);
         $pokemons = Pokemon::entrenadorPokemon($request->id)->get();
         $urlsImagenes = array();
         $habilidades = array();
@@ -33,7 +35,7 @@ class ArtificialController extends Controller
             array_push($habilidades,$pokemon->nombreHabilidad3);
             array_push($habilidades,$pokemon->nombreHabilidad4);
         }
-        return view("EntrenadorArtificial.perfil")->with('imagenes',$urlsImagenes)->with('habilidades',$habilidades)->with('pokemon',$pokemons);
+        return view("EntrenadorArtificial.perfil")->with('imagenes',$urlsImagenes)->with('habilidades',$habilidades)->with('pokemon',$pokemons)->with('entrenador',$entrenador);
     }
 
     public function registro(Request $request){
@@ -111,5 +113,13 @@ class ArtificialController extends Controller
             flash('Debe escoger exactamente 6 pokemon')->warning()->important();
             return redirect('artificial/registro')->withInput();
         }
+    }
+
+     public function modificar(Request $request){
+        $artificial = EntrenadorArtificial::find($request->idArtificial);
+        $artificial->dificultad = $request->dificultad;
+        $artificial->save();
+        flash('Entrenador artificial modificado satisfactoriamente')->warning()->important();
+        return redirect('artificial/registro')->withInput();
     }
 }

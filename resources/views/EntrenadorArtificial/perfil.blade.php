@@ -5,37 +5,26 @@
 	<div id="form-content" class="col-sm-6">
 		<div id="encabezado" class="form-group">
 	    	<img id="portada" src="{{asset('img/pikachu-profile.jpg')}}" alt="Portada">
-	    	<a href="#">
-	    		<span  id="pen" class="glyphicon glyphicon-pencil"> </span>
-	    	</a>	
 	    </div>
-    	<form class="formulario" id="form-perfil">
-    		<div class="form-group"	>
-    			<input type="text" class="form-control" id="nombre" placeholder="Nombre">
+    	<form action="{{url('artificial/modificar')}}" class="formulario" id="form-perfil" method="POST">
+    		{{csrf_field()}}
+    		<div class="form-group">
+    			<h3 id="nombre">{{$entrenador->nickname}}</h3>    			
     		</div>
     		<div class="form-group">
-    			<input type="text" class="form-control" id="edad" placeholder="Edad">
-    		</div>
-    		<div class="form-group" >
-    			<select class="form-control" id="sexo" style="text-align:center;">
-    				<option> Sexo </option>
-    				<option id="femenino" value="Femenino"> Femenino </option>
-    				<option id="masculino" value="Masculino"> Masculino </option>
-    			</select> 
+    			<input type="text" name="idArtificial" value="{{$entrenador->artificial->id}}" hidden="">
     		</div>
     		<div class="form-group">
-    			<input type="text" class="form-control" id="pais" placeholder="Pais">
-    		</div>	
-    		<div class="form-group">
-    			<input type="text" class="form-control" id="nickname" placeholder="Nombre de usuario">
+    			<select class="form-control" id="sexo" name="dificultad" style="text-align:center;" required="">
+					<option value=""> Selecciona la dificultad </option>
+					<option id="aprendiz" value="Aprendiz"<?php if($entrenador->artificial->dificultad == "Aprendiz") echo "selected=''" ?> > Aprendiz </option>
+					<option id="aficionado" value="Aficionado" <?php if($entrenador->artificial->dificultad == "Aficionado") echo "selected=''" ?> > Aficionado </option>
+					<option id="profesional" value="Profesional" <?php if($entrenador->artificial->dificultad == "Profesional") echo "selected=''" ?> > Profesional </option>
+					<option id="leyenda" value="Leyenda" <?php if($entrenador->artificial->dificultad == "Leyenda") echo "selected=''" ?> > Leyenda </option>
+				</select> 
     		</div>
     		<div class="form-group">
-    			<input type="password" class="form-control" id="password" placeholder="Contraseña">
-    		</div>
-    		<div class="form-group">
-    			<a href="#">
-		    		<span id="pen-save" class="glyphicon glyphicon-pencil"> </span>
-		    	</a>	
+    			<button style="background-color: transparent !important; border:none;"><span id="pen-save" class="glyphicon glyphicon-pencil"> </span></button>
     		</div>
     	</form>
     </div>

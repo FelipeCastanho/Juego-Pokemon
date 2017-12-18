@@ -18,6 +18,8 @@ Route::post('entrenador/editar', 'EntrenadorController@editar');
 Route::get('entrenador/editarPokemon/{pokemon}', [ 'uses' => 'EntrenadorController@editarPokemon', 'as' => 'entrenador/editarPokemon']);
 
 Route::post('artificial/perfil', 'ArtificialController@perfil');
+Route::get('artificial/perfil', 'ArtificialController@perfil');
+Route::post('artificial/modificar', 'ArtificialController@modificar');
 
 Route::get('artificial/registro', 'ArtificialController@registro');
 Route::post('artificial/registrar', 'ArtificialController@registrar');
