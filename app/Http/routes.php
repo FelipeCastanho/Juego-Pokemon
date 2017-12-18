@@ -2,7 +2,7 @@
 
 Route::get('/', 'HomeController@home');
 Route::get('/home', 'HomeController@home');
-
+Route::get('acercade','HomeController@acercade');
 
 Route::post('Auth/register', 'Auth\AuthController@postRegister');
 Route::get('Auth/register', 'Auth\AuthController@getRegister');
