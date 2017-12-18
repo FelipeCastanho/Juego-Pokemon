@@ -28,5 +28,7 @@ Route::get('Auth/{provider}', 'Auth\AuthController@redirectToProvider');
 Route::get('Auth/{provider}/callback', 'Auth\AuthController@handleProviderCallback');
 
 Route::get('batalla', 'BatallaController@index');
+Route::post('batalla/interaccion', 'BatallaController@interaccion');
+
 
 Route::resource('api/users', 'UserController');

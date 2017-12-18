@@ -76,7 +76,8 @@ class BatallaController extends Controller
     		$batalla->resultado = $stringResultado;
     		$batalla->save();
     		//Se informa
-			dd($resultado);
+			flash('Tu contrincante fue: ' . $contrincanteSeleccionado->entrenador->nickname . ' y '. $stringResultado)->warning()->important();
+            return redirect('/batalla');
     	}
     	else{
     		flash('Todos los Pokemon deben tener una opción')->warning()->important();
