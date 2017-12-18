@@ -5,6 +5,7 @@
 		<div id="encabezado" class="form-group">
 	    	<img id="portada" src="\ProyectoWWW\public\img\perfiles\{{$entrenador->imagenPerfil}}" alt="Portada">
 	    </div>
+	    @include('flash::message')
     	<form action="{{url('entrenador/editar')}}" class="formulario" id="form-perfil" method="POST" enctype="multipart/form-data" >
     		{{csrf_field()}}
     		<div id="imgPerfil" class="glyphicon glyphicon-camera" align="center">
@@ -19,7 +20,7 @@
     			minlength="5" maxlength="20">
     		</div>
     		<div class="form-group">
-    			<input type="text" class="form-control" name="edad" id="edad" placeholder="Edad" value="{{$entrenador->edad}}" min="5">
+    			<input type="text" class="form-control" name="edad" id="edad" placeholder="Edad" <?php if($entrenador->edad == 0){echo "value=''";}else{echo "value='$entrenador->edad'";} ?> min="5">
     		</div>
     		<div class="form-group" >
     			<select class="form-control" name="sexo" id="sexo" style="text-align:center;">
@@ -34,7 +35,10 @@
     			<input type="text" class="form-control" name="pais" id="pais" placeholder="Pais" value="{{$entrenador->pais}}">
     		</div>	
     		<div class="form-group">
-    			<input type="password" class="form-control" name="password" id="password" placeholder="Contraseña" value="{{$entrenador->password}}" hidden="" min="4" max="15">
+    			<input type="password" class="form-control" name="password" id="password" placeholder="Nueva Contraseña" value=""  min="4" max="15">
+    		</div>
+    		<div class="form-group">
+    			<input type="password" class="form-control" name="confirm" id="confirm" placeholder="Confirmar Contraseña" value=""  min="4" max="15">
     		</div>
     		<div class="form-group">
     			<button style="background-color: transparent !important; border:none;" class="btn btn-primary"><span id="pen-save" class="glyphicon glyphicon-pencil"> </span></button>

@@ -44,12 +44,18 @@ class EntrenadorController extends Controller
     }
 
      public function editar(Request $request){
-        $id = Auth::User()->idEntrenador;
-        $entrenador = User::findOrFail($id);
+        $id = Auth::User()->id;
+        $entrenador = User::find($id);
         $entrenador->nombre = $request->nombre;
         $entrenador->edad = $request->edad;
         $entrenador->sexo = $request->sexo;
         $entrenador->pais = $request->pais;
+        $estado = false;
+        if($request->password == $request->confirm){
+            $entrenador->password = bcrypt($request->password);
+        }else{
+            $estado = true;
+        }
         $path = public_path() . '/img/perfiles/';
         if($request->file('imagenPerfil'))
         {
@@ -59,8 +65,15 @@ class EntrenadorController extends Controller
             $entrenador->imagenPerfil = $perfilNombre;
         }
         $entrenador->save();
-        return redirect('/entrenador/perfil')->with("message", "Perfil actualizado correctamente");;
-        return redirect('/entrenador/perfil');
+
+        if($estado){
+            flash('Las contraseñas no coinciden')->warning()->important();
+            return redirect('/entrenador/perfil');
+        }else{
+            flash('Perfil actualizado correctamente')->success()->important();
+            return redirect('/entrenador/perfil');
+        }
+        
     }
 
     public function editarPokemon(Request $request){
