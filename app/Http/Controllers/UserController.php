@@ -14,17 +14,16 @@ use App\Http\Controllers\Controller;
 class UserController extends Controller
 {
     public function index(){
-		$entrenadores = Entrenador::all();
-    	return response()->json($entrenadores);
+		return view("API.api");
     }
 
     public function store(Request $request){}
 
-    public function show($id){
-		$entrenador = Entrenador::find($id);
-		$user = User::findUser($id)->get();
-		$pokemon = Pokemon::EntrenadorPokemon($id)->get();
-        $batallas = Batalla::EntrenadorHumano($id)->get();
+    public function show(Request $request){
+		$entrenador = Entrenador::find($request->entrenador);
+		$user = User::findUser($request->entrenador)->get();
+		$pokemon = Pokemon::EntrenadorPokemon($request->entrenador)->get();
+        $batallas = Batalla::EntrenadorHumano($request->entrenador)->get();
         if($entrenador){
             return response()->json(['Entrenador'=> $entrenador, 'Usuario'=>$user, 'Pokemon'=> $pokemon, 'Batallas' => $batallas], 200);
         }else{
