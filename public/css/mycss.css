@@ -24,18 +24,22 @@
     color: #848484;
 }
 
+#body-image{
+    background-size: 155%;
+}
+
 #registro{
     font-size: 100%;
-    width: 30%;
-    height: 50%; 
+    width: 50%;
+    height: 40%; 
     color: #fff;
     background-color: #045FB4;
 }
 
 #inicio{
     font-size: 100%;
-    width: 30%;
-    height: 50%; 
+    width: 50%;
+    height: 40%; 
     color: #fff;
     background-color: #045FB4;
 }
