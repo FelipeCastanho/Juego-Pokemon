@@ -51,10 +51,13 @@ class BatallaController extends Controller
     			}
     			$contador = $contador +1;
     		}
-    		//dd($contrincanteSeleccionado->Entrenador->nickname);
-    		//Se escogen jugadas del contrincante -> Por ahora aleatorio hasta que Aleja lo haga
-
-    		$jugadasArtificial = [rand(1,3),rand(1,3),rand(1,3),rand(1,3),rand(1,3),rand(1,3)];
+    		//Se escogen jugadas del contrincante 
+    		//$jugadasArtificial = [rand(1,3),rand(1,3),rand(1,3),rand(1,3),rand(1,3),rand(1,3)];
+    		$imprimir = [0,0,0,0,0,0];
+    		for($k = 0; $k < 6; $k++){
+	    		$imprimir[$k] = $this->jugadasSegunNivel($this->posicionVentaja($jugadas[$k]),$dificultad);
+	    	}
+	    	$jugadasArtificial = $imprimir;
     		//Se valida ganador
     		$resultado = 0;
     		for($j = 0; $j < 6; $j++){
@@ -76,7 +79,13 @@ class BatallaController extends Controller
     		$batalla->resultado = $stringResultado;
     		$batalla->save();
     		//Se informa
-			flash('Tu contrincante fue: ' . $contrincanteSeleccionado->entrenador->nickname . ' y '. $stringResultado)->warning()->important();
+			flash('Tu contrincante fue: ' . $contrincanteSeleccionado->entrenador->nickname . ' y '. $stringResultado 
+		/*. ' Jugada 1 ' . $jugadas[0] . ' vs ' . $jugadasArtificial[0]
+		. ' Jugada 2 ' . $jugadas[1] . ' vs ' . $jugadasArtificial[1]
+		. ' Jugada 3 ' . $jugadas[2] . ' vs ' . $jugadasArtificial[2]
+		. ' Jugada 4 ' . $jugadas[3] . ' vs ' . $jugadasArtificial[3]
+		. ' Jugada 5 ' . $jugadas[4] . ' vs ' . $jugadasArtificial[4]
+		. ' Jugada 6 ' . $jugadas[5] . ' vs ' . $jugadasArtificial[5]*/)->warning()->important();
             return redirect('/batalla');
     	}
     	else{
@@ -96,5 +105,29 @@ class BatallaController extends Controller
     	else if($jugadaJ1 == 3 && $jugadaJ2 == 1) return -1;
     	return 0;
     	//Si se pierde devuelve un -1 si se gana devuelve un 1, si es empate devuelve un 0
+    }
+    public function posicionVentaja($jugadaJ1){
+    	if($jugadaJ1 == 1) return 2;
+    	else if($jugadaJ1 == 2 ) return 3;
+    	else if($jugadaJ1 == 3 ) return 1;
+    	return 0;
+    	//Si se pierde devuelve un -1 si se gana devuelve un 1, si es empate devuelve un 0
+    }
+    
+    public function jugadasSegunNivel($posicionVentaja, $dificultad){
+    	$intervalo = 0.3333;
+    	if($dificultad == "Aprendiz") $intervalo -= -0.1;
+    	if($dificultad == "Aficionado") $intervalo -= 0.05;
+    	if($dificultad == "Profesional") $intervalo -= 0.1;
+    	if($dificultad == "Leyenda") $intervalo -= 0.13;
+    	$intervalos = [0,0];
+    	if($posicionVentaja == 1) $intervalos[0] = 1 - (2*$intervalo);
+    	else $intervalos[0] = $intervalo;
+    	if($posicionVentaja == 2) $intervalos[1] = 1 - (2*$intervalo) + $intervalos[0];
+    	else $intervalos[1] = $intervalo;
+    	$randomFloat = rand(0, 10000) / 10000;
+    	if($randomFloat < $intervalos[0]) return 1;
+    	else if ($randomFloat <= $intervalos[1]) return 2;
+    	else return 3;
     }
 }
