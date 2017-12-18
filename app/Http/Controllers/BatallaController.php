@@ -32,12 +32,12 @@ class BatallaController extends Controller
     	if($dificultad == "") {
     		$dificultad = "Aprendiz";
     	}
-    	/*for($i = 0; $i < 6; $i++){
+    	for($i = 0; $i < 6; $i++){
     		if($jugadas[$i]==0){
     			$jugadasCompletas = false;
     			break;
     		}
-    	}*/
+    	}
     	if($jugadasCompletas){
     		//Se escoge contrincante
     		$contrincantes = EntrenadorArtificial::all()->where('dificultad',$dificultad);
@@ -60,8 +60,10 @@ class BatallaController extends Controller
 	    	$jugadasArtificial = $imprimir;
     		//Se valida ganador
     		$resultado = 0;
+    		$resultados = [0,0,0,0,0,0];
     		for($j = 0; $j < 6; $j++){
-    			$resultado = $resultado + $this->validar($jugadas[$j], $jugadasArtificial[$j]);
+    			$resultados[$j] = $this->validar($jugadas[$j], $jugadasArtificial[$j]);
+    			$resultado = $resultado + $resultados[$j];
     		}
     		//Se guarda el registro
     		$batalla = new Batalla();
@@ -79,13 +81,36 @@ class BatallaController extends Controller
     		$batalla->resultado = $stringResultado;
     		$batalla->save();
     		//Se informa
-			flash('Tu contrincante fue: ' . $contrincanteSeleccionado->entrenador->nickname . ' y '. $stringResultado 
+		//	flash('Tu contrincante fue: ' . $contrincanteSeleccionado->entrenador->nickname . ' y '. $stringResultado 
 		/*. ' Jugada 1 ' . $jugadas[0] . ' vs ' . $jugadasArtificial[0]
 		. ' Jugada 2 ' . $jugadas[1] . ' vs ' . $jugadasArtificial[1]
 		. ' Jugada 3 ' . $jugadas[2] . ' vs ' . $jugadasArtificial[2]
 		. ' Jugada 4 ' . $jugadas[3] . ' vs ' . $jugadasArtificial[3]
 		. ' Jugada 5 ' . $jugadas[4] . ' vs ' . $jugadasArtificial[4]
-		. ' Jugada 6 ' . $jugadas[5] . ' vs ' . $jugadasArtificial[5]*/)->warning()->important();
+		. ' Jugada 6 ' . $jugadas[5] . ' vs ' . $jugadasArtificial[5]*///)->warning()->important();
+          //  return redirect('/batalla');
+			/*$pokemons = Pokemon::entrenadorPokemon(Auth::User()->idEntrenador)->get();
+    		$urlsImagenes = array();
+	    	foreach ($pokemons as $pokemon) {
+	            array_push($urlsImagenes, "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/".$pokemon->numeroPokemon.".png");
+	        }
+	        $pokemons2 = Pokemon::entrenadorPokemon($contrincanteSeleccionado->idEntrenador)->get();
+    		$urlsImagenes2 = array();
+	    	foreach ($pokemons2 as $pokemon2) {
+	            array_push($urlsImagenes2, "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/".$pokemon2->numeroPokemon.".png");
+	        }
+			return view('Batallas.interaccion')->with('imagenes',$urlsImagenes)->with('imagenesArtificial',$urlsImagenes2)->with('jugadas',$jugadas)->with('jugadasArtificial',$jugadasArtificial)->with('resultados',$resultados);*/
+			flash('<h1>Resultados:
+				<br> Tu contrincante fue: '.$contrincanteSeleccionado->entrenador->nickname.
+				'<br> Entrenador humano vs Entrenador artificial '.
+				'<br> Turno 1: ' . $this->stringJugada($jugadas[0]) . ' vs ' . $this->stringJugada($jugadasArtificial[0]) .
+				'<br> Turno 2: ' . $this->stringJugada($jugadas[1]) . ' vs ' . $this->stringJugada($jugadasArtificial[1]) .
+				'<br> Turno 3: ' . $this->stringJugada($jugadas[2]) . ' vs ' . $this->stringJugada($jugadasArtificial[2]) .
+				'<br> Turno 4: ' . $this->stringJugada($jugadas[3]) . ' vs ' . $this->stringJugada($jugadasArtificial[3]) .
+				'<br> Turno 5: ' . $this->stringJugada($jugadas[4]) . ' vs ' . $this->stringJugada($jugadasArtificial[4]) .
+				'<br> Turno 6: ' . $this->stringJugada($jugadas[5]) . ' vs ' . $this->stringJugada($jugadasArtificial[5]) .
+				'<br>¡'. $stringResultado .'!</h1>'
+			)->warning()->important();
             return redirect('/batalla');
     	}
     	else{
@@ -93,6 +118,14 @@ class BatallaController extends Controller
             return redirect('/batalla');
     	}
     	
+    }
+
+    public function stringJugada($jugada){
+    	if($jugada == 1 ) return "Piedra";
+    	else if($jugada == 2 ) return "Papel";
+    	else if($jugada == 3) return "Tijera";
+    	return 0;
+    	//Si se pierde devuelve un -1 si se gana devuelve un 1, si es empate devuelve un 0
     }
 
     public function validar($jugadaJ1, $jugadaJ2){
