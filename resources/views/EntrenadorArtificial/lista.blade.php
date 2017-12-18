@@ -22,7 +22,7 @@
 		<div class="form-group">
 			<select data-placeholder="Escoge 6 pokémon" class="form-control" name="chose[]" id="chose" style="text-align:center;" required="" multiple>
 				@foreach($nombres as $nombre)
-					<option value="{{$nombre[0]}}">{{$nombre[1]}}</option>
+					<option value="{{$nombre[0]}}">{{ucwords($nombre[1])}}</option>
 				@endforeach
 			</select> 
 		</div>
@@ -32,7 +32,7 @@
 </div>
 <br>
 <div class="container" id="listartificial" align="center">
-	<h1>Historial de batallas</h1>
+	<h1>Lista de entrenadores artificiales</h1>
 	<br>
 	<table class="table table-bordered table-striped" id="historial">
 		<thead>

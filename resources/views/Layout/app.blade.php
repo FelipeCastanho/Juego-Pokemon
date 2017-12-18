@@ -5,6 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/mycss.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('plugins/chosen/chosen.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('css/jquery-ui.css')}}">
 	<meta charset="utf-8">
 	<title> Gotta Catch 'Em All </title>
 </head>
@@ -30,6 +31,8 @@
 	<script  src="{{asset('js/bootstrap.js')}}" type="text/javascript"></script>
    	<script  src="{{asset('js/myjs.js')}}"></script>
    	<script src="{{asset('plugins/chosen/chosen.jquery.js')}}"></script>
+   	
+   	<script  src="{{asset('js/jquery-ui.js')}}"></script>
    	 @yield('js')
 </body>
 </html>
