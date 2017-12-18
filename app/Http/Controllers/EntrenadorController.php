@@ -101,4 +101,8 @@ class EntrenadorController extends Controller
     public function index(){
         return View('Entrenador.home');
     }
+
+    public function acercade(){
+        return View('Entrenador.acercade');
+    }
 }

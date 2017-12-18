@@ -15,8 +15,4 @@ class HomeController extends Controller
     public function home(){
         return View('Home.Home');
     }
-
-    public function acercade(){
-        return View('Home.acercade');
-    }
 }
