@@ -16,7 +16,7 @@
 
 		<div class="container" id="progress-bar">
 		  <div class="progress">
-		    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:95%">
+		    <div class="progress-bar progress-bar-striped progress-bar-animated" id="barra" style="width:1%">
 		    	¡Estamos preparando un equipo Pokemón ideal para ti!
 		    </div>
 		  </div>
@@ -61,14 +61,24 @@
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 		<script>
 			$(document).ready(function(){
+				var x = 1;
 				$('#progress-bar').hide();
-				$("#registro").click(function(){
-					var nick = document.getElementById("nickname").value;
-					var pass = document.getElementById("password").value;
-					if (nick.length >= 4 && pass.length >= 4 && nick.length <= 10 && pass.length <= 15) {
-						$("#progress-bar").show();
-					}
-				});
+				function bar(){
+					$("#registro").click(function(){
+						var nick = document.getElementById("nickname").value;
+						var pass = document.getElementById("password").value;
+						if (nick.length >= 4 && pass.length >= 4 && nick.length <= 10 && pass.length <= 15) {
+							$("#progress-bar").show();
+							progress(x);
+						}
+					});
+				}
+				
+				function progress(){
+					document.getElementById("barra").style.width = x +"%";
+					x += 2;
+				}
+				setInterval(bar, 95);
 			});
 		</script>
 
