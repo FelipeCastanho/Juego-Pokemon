@@ -80,10 +80,17 @@ class AuthController extends Controller
     }
 
     public function pokemonTeam($idEntrenador){
-        $numbers = range(1, 386);
-        shuffle($numbers);
-        $pokemons = array_slice($numbers, 0, 5);
+
+        $x = 0;
+        $pokemons = array();
         array_push($pokemons, 25);
+        while ($x<5) {
+          $num_aleatorio = rand(1,386);
+          if (!in_array($num_aleatorio,$pokemons)) {
+            array_push($pokemons,$num_aleatorio);
+            $x++;
+          }
+        }
 
         foreach ($pokemons as $pokemon) {
             $this->pokemonHabilities($pokemon,$idEntrenador);
